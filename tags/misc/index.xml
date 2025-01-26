@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Misc on Cyberrzzerk</title>
-    <link>https://-lb.fr/tags/misc/</link>
+    <link>https://crazy-killer0.github.io/Portfolio//tags/misc/</link>
     <description>Recent content in Misc on Cyberrzzerk</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Imad</copyright>
-    <lastBuildDate>Sun, 14 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://-lb.fr/tags/misc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://crazy-killer0.github.io/Portfolio//tags/misc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FCSC 2024 - Illuminated - Misc</title>
-      <link>https://-lb.fr/posts/fcsc-2024-illuminated-misc/</link>
+      <link>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-illuminated-misc/</link>
       <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://-lb.fr/posts/fcsc-2024-illuminated-misc/</guid>
+      <guid>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-illuminated-misc/</guid>
       <description>Introduction A lighting designer challenges you to reconstruct a video screen animation stored on her DMX recorder. You then take a network capture (capture.pcap) by connecting to her recorder via Ethernet.
 To help you, she gives you an annotated extract from the documentation for her video screen (cheatsheet.pdf).
 cheatsheet.pdf: capture.pcap: Following the instructions and the PDF cheat sheet, I retrieve each LED and display it using a Python program.
@@ -22,10 +22,10 @@ from scapy.</description>
     
     <item>
       <title>FCSC 2024 - Prison break serie - Misc</title>
-      <link>https://-lb.fr/posts/fcsc-2024-prison-break-serie-misc/</link>
+      <link>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-prison-break-serie-misc/</link>
       <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://-lb.fr/posts/fcsc-2024-prison-break-serie-misc/</guid>
+      <guid>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-prison-break-serie-misc/</guid>
       <description>Introduction Carlos, obviously innocent, is locked up in a high-security prison. The prison&amp;rsquo;s building management system (BMS) is controlled by a programmable logic controller (PLC). Access to this PLC was made possible by an implant concealed during a previous operation, which can be accessed from outside the prison via (UDP protocol):
 nc -u prison-break.france-cybersecurity-challenge.fr 47808
 Similarly, read-only access to the scada supervision interface is possible from :
@@ -35,10 +35,10 @@ To help Carlos escape, follow the instructions for the following checkpoints car
     
     <item>
       <title>RITSEC CTF 2023 - Full</title>
-      <link>https://-lb.fr/posts/ritsec-ctf-2023-full/</link>
+      <link>https://crazy-killer0.github.io/Portfolio//posts/ritsec-ctf-2023-full/</link>
       <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://-lb.fr/posts/ritsec-ctf-2023-full/</guid>
+      <guid>https://crazy-killer0.github.io/Portfolio//posts/ritsec-ctf-2023-full/</guid>
       <description>redonne moi cette page markdown mais quand il y a du texte traduit en anglais:
 info : https://ctftime.org/event/1860
 Challenge completed Crypto Either or Neither nor A Fine Cipher Misc New Hire Wild Stocks Connection Terminated Forensics Red Team Activity 1 Red Team Activity 2 Red Team Activity 3 Red Team Activity 4 Steganography Weird turtle QR Web Echoes Rick Roll Pickle Store X-Men Lore Broken Bot Reversing Cats At Play Guess the Password Chandi Bot Chandi bot 1 Chandi bot 2 Chandi bot 3 Chandi bot 4 Chandi bot 5 Chandi bot 6 Write-ups Crypto Either or Neither nor The flag format is &amp;ldquo;MetaCTF{*}&amp;rdquo;.</description>

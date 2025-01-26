@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Forensic on Cyberrzzerk</title>
-    <link>https://-lb.fr/tags/forensic/</link>
+    <link>https://crazy-killer0.github.io/Portfolio//tags/forensic/</link>
     <description>Recent content in Forensic on Cyberrzzerk</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Imad</copyright>
-    <lastBuildDate>Sun, 14 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://-lb.fr/tags/forensic/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://crazy-killer0.github.io/Portfolio//tags/forensic/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FCSC 2024 - Horreur, Malheur serie - Forensic</title>
-      <link>https://-lb.fr/posts/fcsc-2024-horreur-malheur-serie-forensic/</link>
+      <link>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-horreur-malheur-serie-forensic/</link>
       <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://-lb.fr/posts/fcsc-2024-horreur-malheur-serie-forensic/</guid>
+      <guid>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-horreur-malheur-serie-forensic/</guid>
       <description>Introduction You&amp;rsquo;ve just been hired as Information Systems Security Manager (ISSM) for a strategic company.
 When you arrive at your office on your first day, you realise that your predecessor has left you a USB stick with a note on it: VPN compromised (integrity). Version 22.3R1 b1647.
 Note: The first part (Encrypted Archive) unlocks the other parts, with the exception of the second part (Initial Access) which can be processed independently.</description>
@@ -21,20 +21,20 @@ Note: The first part (Encrypted Archive) unlocks the other parts, with the excep
     
     <item>
       <title>FCSC 2024 - Silence - Forensic</title>
-      <link>https://-lb.fr/posts/fcsc-2024-silence-forensic/</link>
+      <link>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-silence-forensic/</link>
       <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://-lb.fr/posts/fcsc-2024-silence-forensic/</guid>
+      <guid>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-silence-forensic/</guid>
       <description>Introduction You&amp;rsquo;re Bob. An old friend sent you a flag for a future FCSC a few years ago, before you lost touch. She reminds you that she is now part of the FCSC organisation. She has been able to set up this flag and offers to play it for you.
 The problem is that the flag has been left in an SMS backup in your SMS application of the time, Silence.</description>
     </item>
     
     <item>
       <title>RITSEC CTF 2023 - Full</title>
-      <link>https://-lb.fr/posts/ritsec-ctf-2023-full/</link>
+      <link>https://crazy-killer0.github.io/Portfolio//posts/ritsec-ctf-2023-full/</link>
       <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://-lb.fr/posts/ritsec-ctf-2023-full/</guid>
+      <guid>https://crazy-killer0.github.io/Portfolio//posts/ritsec-ctf-2023-full/</guid>
       <description>redonne moi cette page markdown mais quand il y a du texte traduit en anglais:
 info : https://ctftime.org/event/1860
 Challenge completed Crypto Either or Neither nor A Fine Cipher Misc New Hire Wild Stocks Connection Terminated Forensics Red Team Activity 1 Red Team Activity 2 Red Team Activity 3 Red Team Activity 4 Steganography Weird turtle QR Web Echoes Rick Roll Pickle Store X-Men Lore Broken Bot Reversing Cats At Play Guess the Password Chandi Bot Chandi bot 1 Chandi bot 2 Chandi bot 3 Chandi bot 4 Chandi bot 5 Chandi bot 6 Write-ups Crypto Either or Neither nor The flag format is &amp;ldquo;MetaCTF{*}&amp;rdquo;.</description>

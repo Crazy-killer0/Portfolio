@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CTI on Cyberrzzerk</title>
-    <link>https://-lb.fr/tags/cti/</link>
+    <link>https://crazy-killer0.github.io/Portfolio//tags/cti/</link>
     <description>Recent content in CTI on Cyberrzzerk</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Imad</copyright>
-    <lastBuildDate>Sun, 14 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://-lb.fr/tags/cti/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://crazy-killer0.github.io/Portfolio//tags/cti/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FCSC 2024 - Horreur, Malheur serie - Forensic</title>
-      <link>https://-lb.fr/posts/fcsc-2024-horreur-malheur-serie-forensic/</link>
+      <link>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-horreur-malheur-serie-forensic/</link>
       <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://-lb.fr/posts/fcsc-2024-horreur-malheur-serie-forensic/</guid>
+      <guid>https://crazy-killer0.github.io/Portfolio//posts/fcsc-2024-horreur-malheur-serie-forensic/</guid>
       <description>Introduction You&amp;rsquo;ve just been hired as Information Systems Security Manager (ISSM) for a strategic company.
 When you arrive at your office on your first day, you realise that your predecessor has left you a USB stick with a note on it: VPN compromised (integrity). Version 22.3R1 b1647.
 Note: The first part (Encrypted Archive) unlocks the other parts, with the exception of the second part (Initial Access) which can be processed independently.</description>
