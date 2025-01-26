@@ -1,0 +1,83 @@
+#header #logo {
+    filter: None;
+    -webkit-filter: None;
+}
+
+html {
+    border-top: None;
+}
+
+body {
+    font-size: 16px; 
+}
+
+#header #nav {
+    font-size: 1.2rem;
+}
+
+#menu #nav {
+    font-size: 1.2rem;
+}
+
+#header h1, #header .h1 {
+    font-size: 1.8rem;
+    line-height: 2.7rem; 
+}
+
+#header #logo {
+    width: 70px;
+    height: 70px;
+    background-size: 70px 70px;
+}
+
+#about a.icon {
+    font-size: 1.6em;
+}
+
+#header-post #menu-icon {
+    margin-top: .3rem;
+}
+
+
+th {
+    font-size: 15px;
+}
+
+table {
+    font-size: 14px;
+}
+
+.content svg:hover {
+    fill: #ee251e;
+}
+
+.content a.icon:hover {
+    color: #ee251e;
+    fill: #ee251e;
+}
+
+@media screen and (max-width: 480px) {
+    #header #title {
+        min-height: 70px
+    }
+    #header #nav li:not(:first-child) {
+        padding-left: 90px;
+    }
+    
+}
+
+#header-post #menu-icon {
+    margin-top: .3rem;
+}
+
+#header-post #nav {
+    font-size: 1.2rem
+}
+
+.tooltipped::after {
+    font-size: 12.8px;
+}
+
+pre {
+    font-size: 16x;
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Cyberrzzerk</title>
+    <link>https://-lb.fr/tags/web/</link>
+    <description>Recent content in Web on Cyberrzzerk</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Imad</copyright>
+    <lastBuildDate>Sun, 02 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://-lb.fr/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RITSEC CTF 2023 - Full</title>
+      <link>https://-lb.fr/posts/ritsec-ctf-2023-full/</link>
+      <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://-lb.fr/posts/ritsec-ctf-2023-full/</guid>
+      <description>redonne moi cette page markdown mais quand il y a du texte traduit en anglais:
+info : https://ctftime.org/event/1860
+Challenge completed Crypto Either or Neither nor A Fine Cipher Misc New Hire Wild Stocks Connection Terminated Forensics Red Team Activity 1 Red Team Activity 2 Red Team Activity 3 Red Team Activity 4 Steganography Weird turtle QR Web Echoes Rick Roll Pickle Store X-Men Lore Broken Bot Reversing Cats At Play Guess the Password Chandi Bot Chandi bot 1 Chandi bot 2 Chandi bot 3 Chandi bot 4 Chandi bot 5 Chandi bot 6 Write-ups Crypto Either or Neither nor The flag format is &amp;ldquo;MetaCTF{*}&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

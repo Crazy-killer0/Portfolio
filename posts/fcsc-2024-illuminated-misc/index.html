@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> FCSC 2024 - Illuminated - Misc | Cyberrzzerk</title>
+  <link rel = 'canonical' href = 'https://-lb.fr/posts/fcsc-2024-illuminated-misc/'>
+  <meta name="description" content="Writing some write up of cool CTF’s challenges and infosec content.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="FCSC 2024 - Illuminated - Misc" />
+<meta property="og:description" content="Introduction A lighting designer challenges you to reconstruct a video screen animation stored on her DMX recorder. You then take a network capture (capture.pcap) by connecting to her recorder via Ethernet.
+To help you, she gives you an annotated extract from the documentation for her video screen (cheatsheet.pdf).
+cheatsheet.pdf: capture.pcap: Following the instructions and the PDF cheat sheet, I retrieve each LED and display it using a Python program.
+from scapy." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://-lb.fr/posts/fcsc-2024-illuminated-misc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-04-14T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="FCSC 2024 - Illuminated - Misc"/>
+<meta name="twitter:description" content="Introduction A lighting designer challenges you to reconstruct a video screen animation stored on her DMX recorder. You then take a network capture (capture.pcap) by connecting to her recorder via Ethernet.
+To help you, she gives you an annotated extract from the documentation for her video screen (cheatsheet.pdf).
+cheatsheet.pdf: capture.pcap: Following the instructions and the PDF cheat sheet, I retrieve each LED and display it using a Python program.
+from scapy."/>
+
+  
+  
+    
+  
+  
+  
+ 
+<link rel="stylesheet" href="../../css/style.css"> 
+
+  
+<link rel="stylesheet" href="../../css/custom.css">
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://-lb.fr/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://-lb.fr/posts/fcsc-2024-prison-break-serie-misc/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://-lb.fr/posts/fcsc-2024-horreur-malheur-serie-forensic/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&text=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&title=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&is_video=false&description=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=FCSC%202024%20-%20Illuminated%20-%20Misc&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&title=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&title=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&name=FCSC%202024%20-%20Illuminated%20-%20Misc&description=Introduction%20A%20lighting%20designer%20challenges%20you%20to%20reconstruct%20a%20video%20screen%20animation%20stored%20on%20her%20DMX%20recorder.%20You%20then%20take%20a%20network%20capture%20%28capture.pcap%29%20by%20connecting%20to%20her%20recorder%20via%20Ethernet.%0aTo%20help%20you%2c%20she%20gives%20you%20an%20annotated%20extract%20from%20the%20documentation%20for%20her%20video%20screen%20%28cheatsheet.pdf%29.%0acheatsheet.pdf%3a%20capture.pcap%3a%20Following%20the%20instructions%20and%20the%20PDF%20cheat%20sheet%2c%20I%20retrieve%20each%20LED%20and%20display%20it%20using%20a%20Python%20program.%0afrom%20scapy." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&t=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        FCSC 2024 - Illuminated - Misc
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2024-04-14 00:00:00 &#43;0000 UTC" itemprop="datePublished">2024-04-14</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          3 minute read
+        </div>
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="/categories/fcsc2024">FCSC2024</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="../../tags/ctf/index.html" rel="tag">CTF</a>
+            
+             ,  
+            <a class="tag-link" href="../../tags/misc/index.html" rel="tag">Misc</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="introduction">Introduction</h2>
+<blockquote>
+<p>A lighting designer challenges you to reconstruct a video screen animation stored on her DMX recorder. You then take a network capture (capture.pcap) by connecting to her recorder via Ethernet.</p>
+<p>To help you, she gives you an annotated extract from the documentation for her video screen (cheatsheet.pdf).</p>
+</blockquote>
+<p>cheatsheet.pdf:
+<img src="/images/FCSC2024/07191aae033a1a017b6fbaa7162762bc.png" alt="image"></p>
+<p>capture.pcap:
+<img src="/images/FCSC2024/96994c81933f951f411fc06dd8b07847.png" alt="image"></p>
+<p>Following the instructions and the PDF cheat sheet, I retrieve each LED and display it using a Python program.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> scapy.all <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.animation <span style="color:#66d9ef">as</span> animation
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> matplotlib.widgets <span style="color:#f92672">import</span> Button
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fonction pour lire et traiter les paquets</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_packets</span>(filename):
+</span></span><span style="display:flex;"><span>    packets <span style="color:#f92672">=</span> rdpcap(filename)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Filtrer les paquets DMX (port UDP 6454)</span>
+</span></span><span style="display:flex;"><span>    dmx_packets <span style="color:#f92672">=</span> [p <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> packets <span style="color:#66d9ef">if</span> UDP <span style="color:#f92672">in</span> p <span style="color:#f92672">and</span> p[UDP]<span style="color:#f92672">.</span>dport <span style="color:#f92672">==</span> <span style="color:#ae81ff">6454</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Extraire les données DMX, le numéro de séquence et l&#39;univers de chaque paquet</span>
+</span></span><span style="display:flex;"><span>    dmx_data <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    sequence_numbers <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    universes <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> dmx_packets:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Modifier ici pour correspondre à la structure exacte des paquets</span>
+</span></span><span style="display:flex;"><span>        dmx_data<span style="color:#f92672">.</span>append(p<span style="color:#f92672">.</span>load[<span style="color:#ae81ff">18</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>])  <span style="color:#75715e"># Ajustement hypothétique pour extraire les données DMX</span>
+</span></span><span style="display:flex;"><span>        sequence_numbers<span style="color:#f92672">.</span>append(p<span style="color:#f92672">.</span>load[<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>        universes<span style="color:#f92672">.</span>append(p<span style="color:#f92672">.</span>load[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> dmx_data, sequence_numbers, universes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fonction pour calculer l&#39;offset DMX</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_dmx_offset</span>(x, y, width<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>, start_channel<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, channels_per_pixel<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calcul du nombre total de canaux par ligne</span>
+</span></span><span style="display:flex;"><span>    total_channels_per_line <span style="color:#f92672">=</span> width <span style="color:#f92672">*</span> channels_per_pixel
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Initialisation du DMX offset</span>
+</span></span><span style="display:flex;"><span>    offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Gestion du zigzag et des univers multiples</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> y <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>:  <span style="color:#75715e"># Dans l&#39;univers 1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> y <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:  <span style="color:#75715e"># Ligne paire (en commençant par 0), de gauche à droite</span>
+</span></span><span style="display:flex;"><span>            offset <span style="color:#f92672">=</span> y <span style="color:#f92672">*</span> total_channels_per_line <span style="color:#f92672">+</span> x <span style="color:#f92672">*</span> channels_per_pixel
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:  <span style="color:#75715e"># Ligne impaire, de droite à gauche</span>
+</span></span><span style="display:flex;"><span>            offset <span style="color:#f92672">=</span> (y <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> total_channels_per_line <span style="color:#f92672">-</span> (x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> channels_per_pixel
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:  <span style="color:#75715e"># Dans l&#39;univers 2 ou plus</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Calcul du décalage sans tenir compte du changement d&#39;univers</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (y <span style="color:#f92672">-</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:  <span style="color:#75715e"># Ligne paire dans le nouvel univers, de gauche à droite</span>
+</span></span><span style="display:flex;"><span>            offset <span style="color:#f92672">=</span> (y <span style="color:#f92672">-</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">*</span> total_channels_per_line <span style="color:#f92672">+</span> x <span style="color:#f92672">*</span> channels_per_pixel
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:  <span style="color:#75715e"># Ligne impaire dans le nouvel univers, de droite à gauche</span>
+</span></span><span style="display:flex;"><span>            offset <span style="color:#f92672">=</span> ((y <span style="color:#f92672">-</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> total_channels_per_line <span style="color:#f92672">-</span> (x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> channels_per_pixel
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Ajustement pour démarrer à 1 dans le nouvel univers</span>
+</span></span><span style="display:flex;"><span>        offset <span style="color:#f92672">+=</span> (start_channel <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> offset
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fonction pour créer une matrice de pixels</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_pixels_matrix</span>(dmx_data):
+</span></span><span style="display:flex;"><span>    pixels <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((len(dmx_data), <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>), dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint8)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i, data <span style="color:#f92672">in</span> enumerate(dmx_data):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> y <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">16</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">16</span>):
+</span></span><span style="display:flex;"><span>                offset <span style="color:#f92672">=</span> calculate_dmx_offset(x, y)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&lt;=</span> offset <span style="color:#f92672">&lt;</span> len(data) <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>                    pixels[i, y, x] <span style="color:#f92672">=</span> [data[offset], data[offset <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>], data[offset <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pixels
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Traitement initial des paquets</span>
+</span></span><span style="display:flex;"><span>dmx_data, sequence_numbers, universes <span style="color:#f92672">=</span> process_packets(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;capture.pcap&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pixels <span style="color:#f92672">=</span> create_pixels_matrix(dmx_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configuration initiale pour l&#39;animation</span>
+</span></span><span style="display:flex;"><span>current_frame <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;auto&#39;</span>  <span style="color:#75715e"># Les modes peuvent être &#39;auto&#39; ou &#39;manual&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Création de la figure pour l&#39;animation</span>
+</span></span><span style="display:flex;"><span>fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots()
+</span></span><span style="display:flex;"><span>img <span style="color:#f92672">=</span> ax<span style="color:#f92672">.</span>imshow(pixels[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>axis(<span style="color:#e6db74">&#39;off&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Texte pour afficher les informations du pixel</span>
+</span></span><span style="display:flex;"><span>pixel_info_text <span style="color:#f92672">=</span> ax<span style="color:#f92672">.</span>text(<span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.95</span>, <span style="color:#e6db74">&#39;&#39;</span>, transform<span style="color:#f92672">=</span>ax<span style="color:#f92672">.</span>transAxes, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;white&#39;</span>, 
+</span></span><span style="display:flex;"><span>                          verticalalignment<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;top&#39;</span>, bbox<span style="color:#f92672">=</span>dict(facecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;black&#39;</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Mise à jour de l&#39;affichage pour l&#39;animation</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_display</span>(frame):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> current_frame
+</span></span><span style="display:flex;"><span>    current_frame <span style="color:#f92672">=</span> frame <span style="color:#f92672">%</span> len(pixels)
+</span></span><span style="display:flex;"><span>    img<span style="color:#f92672">.</span>set_array(pixels[current_frame])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Gestion du défilement manuel</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_scroll</span>(event):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> mode <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;manual&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">global</span> current_frame
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> event<span style="color:#f92672">.</span>button <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;up&#39;</span>:
+</span></span><span style="display:flex;"><span>            update_display(current_frame <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> event<span style="color:#f92672">.</span>button <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;down&#39;</span>:
+</span></span><span style="display:flex;"><span>            update_display(current_frame <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        fig<span style="color:#f92672">.</span>canvas<span style="color:#f92672">.</span>draw_idle()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Basculement entre les modes</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">toggle_mode</span>(event):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> mode
+</span></span><span style="display:flex;"><span>    mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;auto&#39;</span> <span style="color:#66d9ef">if</span> mode <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;manual&#39;</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;manual&#39;</span>
+</span></span><span style="display:flex;"><span>    btn<span style="color:#f92672">.</span>label<span style="color:#f92672">.</span>set_text(<span style="color:#e6db74">&#39;Mode: Auto&#39;</span> <span style="color:#66d9ef">if</span> mode <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;auto&#39;</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;Mode: Manual&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> mode <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;auto&#39;</span>:
+</span></span><span style="display:flex;"><span>        anim<span style="color:#f92672">.</span>event_source<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        anim<span style="color:#f92672">.</span>event_source<span style="color:#f92672">.</span>stop()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Affichage des informations du pixel au survol de la souris</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_hover</span>(event):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> event<span style="color:#f92672">.</span>inaxes <span style="color:#f92672">==</span> ax:
+</span></span><span style="display:flex;"><span>        x, y <span style="color:#f92672">=</span> event<span style="color:#f92672">.</span>xdata, event<span style="color:#f92672">.</span>ydata
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> x <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">and</span> y <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            x, y <span style="color:#f92672">=</span> int(x), int(y)
+</span></span><span style="display:flex;"><span>            offset <span style="color:#f92672">=</span> calculate_dmx_offset(x, y)
+</span></span><span style="display:flex;"><span>            pixel_info_text<span style="color:#f92672">.</span>set_text(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Pixel (</span><span style="color:#e6db74">{</span>x<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>y<span style="color:#e6db74">}</span><span style="color:#e6db74">)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Universe: </span><span style="color:#e6db74">{</span>universes[current_frame]<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">DMX Offset: </span><span style="color:#e6db74">{</span>offset<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            pixel_info_text<span style="color:#f92672">.</span>set_text(<span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        pixel_info_text<span style="color:#f92672">.</span>set_text(<span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>    fig<span style="color:#f92672">.</span>canvas<span style="color:#f92672">.</span>draw_idle()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bouton pour changer de mode</span>
+</span></span><span style="display:flex;"><span>ax_button <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>axes([<span style="color:#ae81ff">0.8</span>, <span style="color:#ae81ff">0.01</span>, <span style="color:#ae81ff">0.18</span>, <span style="color:#ae81ff">0.075</span>])
+</span></span><span style="display:flex;"><span>btn <span style="color:#f92672">=</span> Button(ax_button, <span style="color:#e6db74">&#39;Mode: Auto&#39;</span>)
+</span></span><span style="display:flex;"><span>btn<span style="color:#f92672">.</span>on_clicked(toggle_mode)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Écouteur d&#39;événements pour la molette de la souris</span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>canvas<span style="color:#f92672">.</span>mpl_connect(<span style="color:#e6db74">&#39;scroll_event&#39;</span>, on_scroll)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Écouteur d&#39;événements pour le survol de la souris</span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>canvas<span style="color:#f92672">.</span>mpl_connect(<span style="color:#e6db74">&#39;motion_notify_event&#39;</span>, on_hover)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Animation</span>
+</span></span><span style="display:flex;"><span>anim <span style="color:#f92672">=</span> animation<span style="color:#f92672">.</span>FuncAnimation(fig, update_display, frames<span style="color:#f92672">=</span>len(pixels), interval<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, blit<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p>We get a flickering display, but it remains understandable.</p>
+<p><img src="/images/FCSC2024/4646fb003ed9f69e675d631b5ff9277e.png" alt="image"></p>
+<p>The screen is serpentine because the LEDs are connected in series via DMX, like many stage LED screens.</p>
+<p><img src="/images/FCSC2024/19bc3341cab9d8cfbdc2b70308f944bd.png" alt="image"></p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&text=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&title=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&is_video=false&description=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=FCSC%202024%20-%20Illuminated%20-%20Misc&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&title=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&title=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&name=FCSC%202024%20-%20Illuminated%20-%20Misc&description=Introduction%20A%20lighting%20designer%20challenges%20you%20to%20reconstruct%20a%20video%20screen%20animation%20stored%20on%20her%20DMX%20recorder.%20You%20then%20take%20a%20network%20capture%20%28capture.pcap%29%20by%20connecting%20to%20her%20recorder%20via%20Ethernet.%0aTo%20help%20you%2c%20she%20gives%20you%20an%20annotated%20extract%20from%20the%20documentation%20for%20her%20video%20screen%20%28cheatsheet.pdf%29.%0acheatsheet.pdf%3a%20capture.pcap%3a%20Following%20the%20instructions%20and%20the%20PDF%20cheat%20sheet%2c%20I%20retrieve%20each%20LED%20and%20display%20it%20using%20a%20Python%20program.%0afrom%20scapy." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2ffcsc-2024-illuminated-misc%2f&t=FCSC%202024%20-%20Illuminated%20-%20Misc" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Imad 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+
+</html>

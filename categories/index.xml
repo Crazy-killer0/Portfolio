@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Cyberrzzerk</title>
+    <link>r/categories/</link>
+    <description>Recent content in Categories on Cyberrzzerk</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Imad</copyright>
+    <lastBuildDate>Wed, 15 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>404CTF2024</title>
+      <link>/categories/404ctf2024/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/404ctf2024/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FCSC2024</title>
+      <link>/categories/fcsc2024/</link>
+      <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/fcsc2024/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Disparue(s)2023</title>
+      <link>/categories/disparues2023/</link>
+      <pubDate>Sat, 04 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/disparues2023/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RITSEC CTF 2023</title>
+      <link>/categories/ritsec-ctf-2023/</link>
+      <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/ritsec-ctf-2023/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 404 CTF 2024 - Preview | Cyberrzzerk</title>
+  <link rel = 'canonical' href = 'https://-lb.fr/posts/404-ctf-2024-preview/'>
+  <meta name="description" content="Writing some write up of cool CTF’s challenges and infosec content.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="404 CTF 2024 - Preview" />
+<meta property="og:description" content="List of Approved Challenges Divers Discord De la friture sur la ligne Bienvenue Coup de circuit [3/3] Revers(i)b(e Engineering [0/2] Cryptanalyse Bébé nageur Le petit bain Poor Random Number Generator Plongeon Rapide Super Artistique J&rsquo;éponge donc j&rsquo;essuie Poor Random Number Generator 2 Zack Adeaux La Seine J&rsquo;ai glissé chef ! SEA - La face cachée de l&rsquo;iceberg RSAisAde-tomatECC-oignPon La Brasse ou Le Papillon ? Exploitation de binaires Pseudooverflow Jean Pile Mordu du 100m Antismash Web Vous êtes en RETARD Le match du siècle [1/2] Exploit mag Le match du siècle [2/2] LE GORFOU 42 La Boutique Officielle Investigation numérique Le tri aux logs Un boulevard pour pointer Coup de circuit [1/3] Darts Bank Vaut mieux s&rsquo;excuser que guérir De bons croissants au beurre Poids RavVs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://-lb.fr/posts/404-ctf-2024-preview/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-15T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="404 CTF 2024 - Preview"/>
+<meta name="twitter:description" content="List of Approved Challenges Divers Discord De la friture sur la ligne Bienvenue Coup de circuit [3/3] Revers(i)b(e Engineering [0/2] Cryptanalyse Bébé nageur Le petit bain Poor Random Number Generator Plongeon Rapide Super Artistique J&rsquo;éponge donc j&rsquo;essuie Poor Random Number Generator 2 Zack Adeaux La Seine J&rsquo;ai glissé chef ! SEA - La face cachée de l&rsquo;iceberg RSAisAde-tomatECC-oignPon La Brasse ou Le Papillon ? Exploitation de binaires Pseudooverflow Jean Pile Mordu du 100m Antismash Web Vous êtes en RETARD Le match du siècle [1/2] Exploit mag Le match du siècle [2/2] LE GORFOU 42 La Boutique Officielle Investigation numérique Le tri aux logs Un boulevard pour pointer Coup de circuit [1/3] Darts Bank Vaut mieux s&rsquo;excuser que guérir De bons croissants au beurre Poids RavVs."/>
+
+  
+  
+    
+  
+ 
+<link rel="stylesheet" href="../../css/style.css"> 
+
+  
+<link rel="stylesheet" href="../../css/custom.css">  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://-lb.fr/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://-lb.fr/ranking/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://-lb.fr/posts/404-ctf-2024-artificial-intelligence-serie/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&text=404%20CTF%202024%20-%20Preview" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&title=404%20CTF%202024%20-%20Preview" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&is_video=false&description=404%20CTF%202024%20-%20Preview" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=404%20CTF%202024%20-%20Preview&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&title=404%20CTF%202024%20-%20Preview" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&title=404%20CTF%202024%20-%20Preview" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&name=404%20CTF%202024%20-%20Preview&description=List%20of%20Approved%20Challenges%20Divers%20Discord%20De%20la%20friture%20sur%20la%20ligne%20Bienvenue%20Coup%20de%20circuit%20%5b3%2f3%5d%20Revers%28i%29b%28e%20Engineering%20%5b0%2f2%5d%20Cryptanalyse%20B%c3%a9b%c3%a9%20nageur%20Le%20petit%20bain%20Poor%20Random%20Number%20Generator%20Plongeon%20Rapide%20Super%20Artistique%20J%26rsquo%3b%c3%a9ponge%20donc%20j%26rsquo%3bessuie%20Poor%20Random%20Number%20Generator%202%20Zack%20Adeaux%20La%20Seine%20J%26rsquo%3bai%20gliss%c3%a9%20chef%20%21%20SEA%20-%20La%20face%20cach%c3%a9e%20de%20l%26rsquo%3biceberg%20RSAisAde-tomatECC-oignPon%20La%20Brasse%20ou%20Le%20Papillon%20%3f%20Exploitation%20de%20binaires%20Pseudooverflow%20Jean%20Pile%20Mordu%20du%20100m%20Antismash%20Web%20Vous%20%c3%aates%20en%20RETARD%20Le%20match%20du%20si%c3%a8cle%20%5b1%2f2%5d%20Exploit%20mag%20Le%20match%20du%20si%c3%a8cle%20%5b2%2f2%5d%20LE%20GORFOU%2042%20La%20Boutique%20Officielle%20Investigation%20num%c3%a9rique%20Le%20tri%20aux%20logs%20Un%20boulevard%20pour%20pointer%20Coup%20de%20circuit%20%5b1%2f3%5d%20Darts%20Bank%20Vaut%20mieux%20s%26rsquo%3bexcuser%20que%20gu%c3%a9rir%20De%20bons%20croissants%20au%20beurre%20Poids%20RavVs." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&t=404%20CTF%202024%20-%20Preview" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#divers">Divers</a></li>
+    <li><a href="#cryptanalyse">Cryptanalyse</a></li>
+    <li><a href="#exploitation-de-binaires">Exploitation de binaires</a></li>
+    <li><a href="#web">Web</a></li>
+    <li><a href="#investigation-numérique">Investigation numérique</a></li>
+    <li><a href="#sécurité-matérielle">Sécurité matérielle</a></li>
+    <li><a href="#stéganographie">Stéganographie</a></li>
+    <li><a href="#rétro-ingénierie">Rétro-Ingénierie</a></li>
+    <li><a href="#renseignement-en-sources-ouvertes">Renseignement en sources ouvertes</a></li>
+    <li><a href="#algorithmique-quantique">Algorithmique quantique</a></li>
+    <li><a href="#intelligence-artificielle">Intelligence artificielle</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        404 CTF 2024 - Preview
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2024-05-15 00:00:00 &#43;0000 UTC" itemprop="datePublished">2024-05-15</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          1 minute read
+        </div>
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="../../categories/404ctf2024/index.html">404CTF2024</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="../../tags/ctf/index.html" rel="tag">CTF</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h1 id="list-of-approved-challenges">List of Approved Challenges</h1>
+<h2 id="divers">Divers</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Discord</li>
+<li><input checked="" disabled="" type="checkbox"> De la friture sur la ligne</li>
+<li><input checked="" disabled="" type="checkbox"> Bienvenue</li>
+<li><input checked="" disabled="" type="checkbox"> Coup de circuit [3/3]</li>
+<li><input checked="" disabled="" type="checkbox"> Revers(i)b(e Engineering [0/2]</li>
+</ul>
+<h2 id="cryptanalyse">Cryptanalyse</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Bébé nageur</li>
+<li><input checked="" disabled="" type="checkbox"> Le petit bain</li>
+<li><input checked="" disabled="" type="checkbox"> Poor Random Number Generator</li>
+<li><input disabled="" type="checkbox"> Plongeon Rapide Super Artistique</li>
+<li><input disabled="" type="checkbox"> J&rsquo;éponge donc j&rsquo;essuie</li>
+<li><input disabled="" type="checkbox"> Poor Random Number Generator 2</li>
+<li><input disabled="" type="checkbox"> Zack Adeaux</li>
+<li><input disabled="" type="checkbox"> La Seine</li>
+<li><input disabled="" type="checkbox"> J&rsquo;ai glissé chef !</li>
+<li><input disabled="" type="checkbox"> SEA - La face cachée de l&rsquo;iceberg</li>
+<li><input disabled="" type="checkbox"> RSAisAde-tomatECC-oignPon</li>
+<li><input disabled="" type="checkbox"> La Brasse ou Le Papillon ?</li>
+</ul>
+<h2 id="exploitation-de-binaires">Exploitation de binaires</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Pseudooverflow</li>
+<li><input disabled="" type="checkbox"> Jean Pile</li>
+<li><input disabled="" type="checkbox"> Mordu du 100m</li>
+<li><input disabled="" type="checkbox"> Antismash</li>
+</ul>
+<h2 id="web">Web</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Vous êtes en RETARD</li>
+<li><input checked="" disabled="" type="checkbox"> Le match du siècle [1/2]</li>
+<li><input checked="" disabled="" type="checkbox"> Exploit mag</li>
+<li><input checked="" disabled="" type="checkbox"> Le match du siècle [2/2]</li>
+<li><input checked="" disabled="" type="checkbox"> LE GORFOU 42</li>
+<li><input disabled="" type="checkbox"> La Boutique Officielle</li>
+</ul>
+<h2 id="investigation-numérique">Investigation numérique</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Le tri aux logs</li>
+<li><input checked="" disabled="" type="checkbox"> Un boulevard pour pointer</li>
+<li><input checked="" disabled="" type="checkbox"> Coup de circuit [1/3]</li>
+<li><input checked="" disabled="" type="checkbox"> Darts Bank</li>
+<li><input checked="" disabled="" type="checkbox"> Vaut mieux s&rsquo;excuser que guérir</li>
+<li><input disabled="" type="checkbox"> De bons croissants au beurre</li>
+<li><input disabled="" type="checkbox"> Poids RavVs. Cours Jette [1/3]</li>
+<li><input disabled="" type="checkbox"> Poids RavVs. Cours Jette [3/3]</li>
+</ul>
+<h2 id="sécurité-matérielle">Sécurité matérielle</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Serial Killer</li>
+<li><input checked="" disabled="" type="checkbox"> Le soulevé de GND</li>
+<li><input checked="" disabled="" type="checkbox"> Comment est votre modulation ? [1/2]</li>
+<li><input disabled="" type="checkbox"> Comment est votre modulation ? [2/2]</li>
+<li><input disabled="" type="checkbox"> Sea side channel [1/4]</li>
+<li><input disabled="" type="checkbox"> Sea side channel [2/4]</li>
+<li><input disabled="" type="checkbox"> Sea side channel [3/4]</li>
+<li><input disabled="" type="checkbox"> Sea side channel [4/4]</li>
+</ul>
+<h2 id="stéganographie">Stéganographie</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> L&rsquo;absence</li>
+<li><input checked="" disabled="" type="checkbox"> Regarder en stéréo</li>
+<li><input disabled="" type="checkbox"> La Barre Fixe</li>
+<li><input disabled="" type="checkbox"> Le grand écart</li>
+<li><input disabled="" type="checkbox"> La chute</li>
+</ul>
+<h2 id="rétro-ingénierie">Rétro-Ingénierie</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Échauffement</li>
+<li><input checked="" disabled="" type="checkbox"> Intronisation du CHAUUSURE</li>
+<li><input checked="" disabled="" type="checkbox"> Bugdroid Fight [1/2]</li>
+<li><input checked="" disabled="" type="checkbox"> Revers(i)b(e Engineering [1/2]</li>
+<li><input checked="" disabled="" type="checkbox"> Bugdroid Fight [2/2]</li>
+<li><input disabled="" type="checkbox"> Nanocombattants</li>
+<li><input disabled="" type="checkbox"> Revers(i)b(e Engineering [2/2]</li>
+<li><input disabled="" type="checkbox"> Poids RavVs. Cours Jette [2/3]</li>
+<li><input disabled="" type="checkbox"> Le Tableau Noir</li>
+<li><input disabled="" type="checkbox"> L&rsquo;entrée du Dojo</li>
+</ul>
+<h2 id="renseignement-en-sources-ouvertes">Renseignement en sources ouvertes</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Légende</li>
+<li><input checked="" disabled="" type="checkbox"> Not on my watch</li>
+<li><input checked="" disabled="" type="checkbox"> Coup de circuit [2/3]</li>
+<li><input checked="" disabled="" type="checkbox"> That Escalated Quickly</li>
+<li><input checked="" disabled="" type="checkbox"> Secret Training [1/2]</li>
+<li><input disabled="" type="checkbox"> Secret Training [2/2]</li>
+</ul>
+<h2 id="algorithmique-quantique">Algorithmique quantique</h2>
+<ul>
+<li><input disabled="" type="checkbox"> Des trains superposés</li>
+<li><input disabled="" type="checkbox"> De l&rsquo;écoute, pas très discrète</li>
+<li><input disabled="" type="checkbox"> De la multiplicité des problèmes</li>
+<li><input disabled="" type="checkbox"> De L&rsquo;inversion</li>
+</ul>
+<h2 id="intelligence-artificielle">Intelligence artificielle</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Du poison [1/2]</li>
+<li><input checked="" disabled="" type="checkbox"> Du poison [2/2]</li>
+<li><input checked="" disabled="" type="checkbox"> Des portes dérobées</li>
+<li><input checked="" disabled="" type="checkbox"> Du poison [3/2]</li>
+</ul>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#divers">Divers</a></li>
+    <li><a href="#cryptanalyse">Cryptanalyse</a></li>
+    <li><a href="#exploitation-de-binaires">Exploitation de binaires</a></li>
+    <li><a href="#web">Web</a></li>
+    <li><a href="#investigation-numérique">Investigation numérique</a></li>
+    <li><a href="#sécurité-matérielle">Sécurité matérielle</a></li>
+    <li><a href="#stéganographie">Stéganographie</a></li>
+    <li><a href="#rétro-ingénierie">Rétro-Ingénierie</a></li>
+    <li><a href="#renseignement-en-sources-ouvertes">Renseignement en sources ouvertes</a></li>
+    <li><a href="#algorithmique-quantique">Algorithmique quantique</a></li>
+    <li><a href="#intelligence-artificielle">Intelligence artificielle</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&text=404%20CTF%202024%20-%20Preview" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&title=404%20CTF%202024%20-%20Preview" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&is_video=false&description=404%20CTF%202024%20-%20Preview" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=404%20CTF%202024%20-%20Preview&body=Check out this article: https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&title=404%20CTF%202024%20-%20Preview" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&title=404%20CTF%202024%20-%20Preview" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&name=404%20CTF%202024%20-%20Preview&description=List%20of%20Approved%20Challenges%20Divers%20Discord%20De%20la%20friture%20sur%20la%20ligne%20Bienvenue%20Coup%20de%20circuit%20%5b3%2f3%5d%20Revers%28i%29b%28e%20Engineering%20%5b0%2f2%5d%20Cryptanalyse%20B%c3%a9b%c3%a9%20nageur%20Le%20petit%20bain%20Poor%20Random%20Number%20Generator%20Plongeon%20Rapide%20Super%20Artistique%20J%26rsquo%3b%c3%a9ponge%20donc%20j%26rsquo%3bessuie%20Poor%20Random%20Number%20Generator%202%20Zack%20Adeaux%20La%20Seine%20J%26rsquo%3bai%20gliss%c3%a9%20chef%20%21%20SEA%20-%20La%20face%20cach%c3%a9e%20de%20l%26rsquo%3biceberg%20RSAisAde-tomatECC-oignPon%20La%20Brasse%20ou%20Le%20Papillon%20%3f%20Exploitation%20de%20binaires%20Pseudooverflow%20Jean%20Pile%20Mordu%20du%20100m%20Antismash%20Web%20Vous%20%c3%aates%20en%20RETARD%20Le%20match%20du%20si%c3%a8cle%20%5b1%2f2%5d%20Exploit%20mag%20Le%20match%20du%20si%c3%a8cle%20%5b2%2f2%5d%20LE%20GORFOU%2042%20La%20Boutique%20Officielle%20Investigation%20num%c3%a9rique%20Le%20tri%20aux%20logs%20Un%20boulevard%20pour%20pointer%20Coup%20de%20circuit%20%5b1%2f3%5d%20Darts%20Bank%20Vaut%20mieux%20s%26rsquo%3bexcuser%20que%20gu%c3%a9rir%20De%20bons%20croissants%20au%20beurre%20Poids%20RavVs." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2f-lb.fr%2fposts%2f404-ctf-2024-preview%2f&t=404%20CTF%202024%20-%20Preview" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Imad 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="../../index.html">Home</a></li>
+    
+        <li><a href="../index.html">Categories</a></li>
+      
+        <li><a href="../../ranking/index.html">Ranking</a></li>
+      
+        <li><a href="../../whoami/index.html">Whoami</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+
+</html>

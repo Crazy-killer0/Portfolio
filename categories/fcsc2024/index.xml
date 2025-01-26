@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FCSC2024 on Cyberrzzerk</title>
+    <link>https://-lb.fr/categories/fcsc2024/</link>
+    <description>Recent content in FCSC2024 on Cyberrzzerk</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Imad</copyright>
+    <lastBuildDate>Sun, 14 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://-lb.fr/categories/fcsc2024/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FCSC 2024 - Fifty Shades of White - Reverse</title>
+      <link>https://-lb.fr/posts/fcsc-2024-fifty-shades-of-white-reverse/</link>
+      <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://-lb.fr/posts/fcsc-2024-fifty-shades-of-white-reverse/</guid>
+      <description>Introduction You are now Jesse Pinkman. You&amp;rsquo;re currently on the outs with Walter White and want to do something nasty to him.
+You are asked to write a keygen for the binary that Walter has designed to restrict access to his &amp;ldquo;professional&amp;rdquo; data. The flag will appear after 50 successive validations.
+We are provided with a binary and a txt file.
+The chall remote then asks us to validate 50 users, so we&amp;rsquo;ll need to find a way to reverse validate() correctly in order to generate a valid serial for each user.</description>
+    </item>
+    
+    <item>
+      <title>FCSC 2024 - Horreur, Malheur serie - Forensic</title>
+      <link>https://-lb.fr/posts/fcsc-2024-horreur-malheur-serie-forensic/</link>
+      <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://-lb.fr/posts/fcsc-2024-horreur-malheur-serie-forensic/</guid>
+      <description>Introduction You&amp;rsquo;ve just been hired as Information Systems Security Manager (ISSM) for a strategic company.
+When you arrive at your office on your first day, you realise that your predecessor has left you a USB stick with a note on it: VPN compromised (integrity). Version 22.3R1 b1647.
+Note: The first part (Encrypted Archive) unlocks the other parts, with the exception of the second part (Initial Access) which can be processed independently.</description>
+    </item>
+    
+    <item>
+      <title>FCSC 2024 - Illuminated - Misc</title>
+      <link>https://-lb.fr/posts/fcsc-2024-illuminated-misc/</link>
+      <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://-lb.fr/posts/fcsc-2024-illuminated-misc/</guid>
+      <description>Introduction A lighting designer challenges you to reconstruct a video screen animation stored on her DMX recorder. You then take a network capture (capture.pcap) by connecting to her recorder via Ethernet.
+To help you, she gives you an annotated extract from the documentation for her video screen (cheatsheet.pdf).
+cheatsheet.pdf: capture.pcap: Following the instructions and the PDF cheat sheet, I retrieve each LED and display it using a Python program.
+from scapy.</description>
+    </item>
+    
+    <item>
+      <title>FCSC 2024 - Prison break serie - Misc</title>
+      <link>https://-lb.fr/posts/fcsc-2024-prison-break-serie-misc/</link>
+      <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://-lb.fr/posts/fcsc-2024-prison-break-serie-misc/</guid>
+      <description>Introduction Carlos, obviously innocent, is locked up in a high-security prison. The prison&amp;rsquo;s building management system (BMS) is controlled by a programmable logic controller (PLC). Access to this PLC was made possible by an implant concealed during a previous operation, which can be accessed from outside the prison via (UDP protocol):
+nc -u prison-break.france-cybersecurity-challenge.fr 47808
+Similarly, read-only access to the scada supervision interface is possible from :
+https://prison-break.france-cybersecurity-challenge.fr/
+To help Carlos escape, follow the instructions for the following checkpoints carefully:</description>
+    </item>
+    
+    <item>
+      <title>FCSC 2024 - Silence - Forensic</title>
+      <link>https://-lb.fr/posts/fcsc-2024-silence-forensic/</link>
+      <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://-lb.fr/posts/fcsc-2024-silence-forensic/</guid>
+      <description>Introduction You&amp;rsquo;re Bob. An old friend sent you a flag for a future FCSC a few years ago, before you lost touch. She reminds you that she is now part of the FCSC organisation. She has been able to set up this flag and offers to play it for you.
+The problem is that the flag has been left in an SMS backup in your SMS application of the time, Silence.</description>
+    </item>
+    
+  </channel>
+</rss>
